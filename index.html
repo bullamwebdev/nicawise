@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+
+<!-- Perplexity Computer Attribution — SEO Meta Tags -->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NicaWise — Investment Trips to Nicaragua's Emerald Coast</title>
+<meta name="description" content="NicaWise organizes curated investment trips to Nicaragua's Emerald Coast. Visit land, meet lawyers, connect with expats, and build your project in paradise.">
+<meta property="og:title" content="NicaWise — Investment Trips to Nicaragua's Emerald Coast">
+<meta property="og:description" content="We organize your investment trip: visit land, meet lawyers, connect with expats, enjoy Nicaragua. Book your tour today.">
+
+<!-- Fonts -->
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=zodiak@400,500,600,700&display=swap" rel="stylesheet">
+
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+<!-- GSAP for animations -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+
+<link rel="stylesheet" href="./base.css">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="#" class="logo" aria-label="NicaWise Home">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="2" width="32" height="32" rx="8" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <path d="M10 26 V14 L18 8 L26 14 V26" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M15 26 V20 H21 V26" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="18" cy="15" r="2" stroke="currentColor" stroke-width="1.2" fill="none"/>
+        </svg>
+        <span>NicaWise</span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#trip-includes" class="nav-link">Your Trip</a>
+        <a href="#opportunities" class="nav-link">Opportunities</a>
+        <a href="#surf" class="nav-link">Surf Zones</a>
+        <a href="#why-invest" class="nav-link">Why Invest</a>
+        <a href="#book" class="nav-link nav-link--cta">Book a Trip</a>
+      </nav>
+      <div class="header-actions">
+        <button data-theme-toggle aria-label="Switch to dark mode" class="theme-toggle">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="mobile-menu-btn" id="menuBtn" aria-label="Open menu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <img src="./assets/hero-beachfront.jpg" alt="Beachfront investment opportunity in Nicaragua's Emerald Coast" loading="eager">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-tag">Investment Trip Agency</p>
+      <h1 class="hero-title">See It. Feel It.<br>Invest in It.</h1>
+      <p class="hero-subtitle">NicaWise organizes curated investment trips to Nicaragua's Emerald Coast. We handle everything — land visits, lawyer introductions, expat connections, food, and leisure — so you can focus on your next big move.</p>
+      <div class="hero-actions">
+        <a href="#book" class="btn btn-primary">Book Your Trip</a>
+        <a href="#how-it-works" class="btn btn-outline">How It Works</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="stat-number" data-count="8">0</span><span class="stat-suffix">–12%</span>
+          <span class="stat-label">Annual Property Growth</span>
+        </div>
+        <div class="hero-stat">
+          <span class="stat-number" data-count="15">0</span><span class="stat-suffix">K</span>
+          <span class="stat-label">Entry Points From ($)</span>
+        </div>
+        <div class="hero-stat">
+          <span class="stat-number" data-count="7">0</span><span class="stat-suffix"> Days</span>
+          <span class="stat-label">Curated Trip</span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- VALUE PROPOSITION STRIP -->
+  <section class="section value-strip">
+    <div class="container">
+      <div class="value-strip-inner">
+        <div class="value-item">
+          <i data-lucide="map-pin"></i>
+          <span>Land Visits</span>
+        </div>
+        <div class="value-item">
+          <i data-lucide="scale"></i>
+          <span>Lawyer Meetings</span>
+        </div>
+        <div class="value-item">
+          <i data-lucide="users"></i>
+          <span>Expat Connections</span>
+        </div>
+        <div class="value-item">
+          <i data-lucide="utensils"></i>
+          <span>Food &amp; Leisure</span>
+        </div>
+        <div class="value-item">
+          <i data-lucide="building"></i>
+          <span>Project Planning</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">How It Works</p>
+        <h2 class="section-title">From Curiosity to Closing</h2>
+        <p class="section-desc">Your investment journey in four simple steps. We handle logistics, introductions, and local expertise — you make the decisions.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-step">
+          <div class="timeline-number">01</div>
+          <div class="timeline-content">
+            <div class="timeline-icon"><i data-lucide="message-circle"></i></div>
+            <h3>Discovery Call</h3>
+            <p>We learn about your investment goals, budget, and timeline. Whether you're looking for raw land, a turnkey home, or a commercial opportunity — we tailor the trip to you.</p>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-number">02</div>
+          <div class="timeline-content">
+            <div class="timeline-icon"><i data-lucide="plane"></i></div>
+            <h3>We Plan Your Trip</h3>
+            <p>NicaWise builds a custom itinerary: property visits, meetings with local lawyers, introductions to landlords and expat entrepreneurs, plus curated dining and leisure.</p>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-number">03</div>
+          <div class="timeline-content">
+            <div class="timeline-icon"><i data-lucide="compass"></i></div>
+            <h3>Boots on the Ground</h3>
+            <p>You fly in, we guide you. Walk the land, shake hands with attorneys, sit down with established investors, eat the best local food, and explore the coast — all with NicaWise by your side.</p>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-number">04</div>
+          <div class="timeline-content">
+            <div class="timeline-icon"><i data-lucide="handshake"></i></div>
+            <h3>Build Your Project</h3>
+            <p>After the trip, we stay with you. From navigating legal processes to connecting you with architects and contractors — we support your project from first visit to finished build.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-cta">
+        <a href="#book" class="btn btn-primary btn-lg">Start Your Journey</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- YOUR TRIP INCLUDES -->
+  <section class="section trip-includes" id="trip-includes">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">Your Trip Includes</p>
+        <h2 class="section-title">Everything You Need, Nothing You Don't</h2>
+        <p class="section-desc">A complete, end-to-end investment experience designed to give you confidence in every decision.</p>
+      </div>
+
+      <div class="includes-grid">
+        <div class="includes-card includes-card--feature">
+          <div class="includes-card-img">
+            <img src="./assets/property-oceanfront.jpg" alt="Visiting investment properties on Nicaragua's Emerald Coast" loading="lazy">
+            <div class="includes-card-overlay"></div>
+          </div>
+          <div class="includes-card-body">
+            <div class="includes-card-icon"><i data-lucide="map"></i></div>
+            <h3>Guided Property Tours</h3>
+            <p>Visit handpicked lots, homes, and commercial properties across Popoyo, Guasacate, Santana, and beyond. Walk the land. See the views. Feel the potential.</p>
+          </div>
+        </div>
+        <div class="includes-card">
+          <div class="includes-card-icon"><i data-lucide="scale"></i></div>
+          <h3>Legal Introductions</h3>
+          <p>Meet vetted Nicaraguan attorneys who specialize in foreign property transactions. Understand title verification, ownership structures, and closing processes.</p>
+        </div>
+        <div class="includes-card">
+          <div class="includes-card-icon"><i data-lucide="users"></i></div>
+          <h3>Expat &amp; Landlord Network</h3>
+          <p>Connect with established expats and local property owners who've already made the leap. Hear real stories, learn from their experience, and build your network.</p>
+        </div>
+        <div class="includes-card">
+          <div class="includes-card-icon"><i data-lucide="utensils"></i></div>
+          <h3>Food &amp; Culture</h3>
+          <p>Savor the best of Nicaraguan cuisine — fresh seafood, traditional gallo pinto, tropical fruit, and beachside dining. Experience the lifestyle that comes with your investment.</p>
+        </div>
+        <div class="includes-card">
+          <div class="includes-card-icon"><i data-lucide="waves"></i></div>
+          <h3>Surf &amp; Leisure</h3>
+          <p>World-class breaks from Popoyo's famous barrels to beginner-friendly El Tránsito. Explore multiple surf zones: Emerald Coast (Popoyo, Guasacate, Santana), plus northern gems like El Tránsito and San Diego if you want to expand your search.</p>
+        </div>
+        <div class="includes-card">
+          <div class="includes-card-icon"><i data-lucide="briefcase"></i></div>
+          <h3>Project Planning</h3>
+          <p>Meet architects, contractors, and property managers. Get quotes, see ongoing builds, and start shaping your project before you leave the country.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAMPLE ITINERARY -->
+  <section class="section itinerary" id="itinerary">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">Sample Itinerary</p>
+        <h2 class="section-title">7 Days That Could Change Everything</h2>
+        <p class="section-desc">Every trip is customized to your goals. Here's what a typical NicaWise investment trip looks like.</p>
+      </div>
+
+      <div class="itinerary-grid">
+        <div class="itinerary-day">
+          <div class="itinerary-day-label">Day 1–2</div>
+          <h3>Arrival &amp; Orientation</h3>
+          <p>Airport pickup, settle into your beachfront accommodation. Welcome dinner with the NicaWise team. Overview of the region, market trends, and your personalized agenda.</p>
+          <div class="itinerary-tags">
+            <span><i data-lucide="plane"></i> Transfer</span>
+            <span><i data-lucide="utensils"></i> Welcome Dinner</span>
+          </div>
+        </div>
+        <div class="itinerary-day">
+          <div class="itinerary-day-label">Day 3–4</div>
+          <h3>Property Tours</h3>
+          <p>Full-day guided visits to selected lots, homes, and commercial properties. Walk every parcel. See infrastructure, access, utilities. Compare locations across the Emerald Coast.</p>
+          <div class="itinerary-tags">
+            <span><i data-lucide="map-pin"></i> Land Visits</span>
+            <span><i data-lucide="camera"></i> Site Analysis</span>
+          </div>
+        </div>
+        <div class="itinerary-day">
+          <div class="itinerary-day-label">Day 5</div>
+          <h3>Legal &amp; Network Day</h3>
+          <p>Morning meeting with local attorneys — title review, ownership options, tax structures. Afternoon with established expat investors and landlords sharing real-world insights.</p>
+          <div class="itinerary-tags">
+            <span><i data-lucide="scale"></i> Lawyers</span>
+            <span><i data-lucide="users"></i> Expat Network</span>
+          </div>
+        </div>
+        <div class="itinerary-day">
+          <div class="itinerary-day-label">Day 6</div>
+          <h3>Project &amp; Leisure</h3>
+          <p>Meet architects and contractors. Visit ongoing construction projects. Afternoon free for surfing, exploring, or a sunset boat ride along the coast.</p>
+          <div class="itinerary-tags">
+            <span><i data-lucide="building"></i> Architects</span>
+            <span><i data-lucide="waves"></i> Surf</span>
+          </div>
+        </div>
+        <div class="itinerary-day">
+          <div class="itinerary-day-label">Day 7</div>
+          <h3>Debrief &amp; Next Steps</h3>
+          <p>Final review with the NicaWise team. Compare notes, discuss favorites, outline next steps. We stay with you long after you board the plane.</p>
+          <div class="itinerary-tags">
+            <span><i data-lucide="clipboard-check"></i> Review</span>
+            <span><i data-lucide="handshake"></i> Action Plan</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="itinerary-note">
+        <i data-lucide="info"></i>
+        <p>Every itinerary is fully customizable. Shorter trips, extended stays, and focused agendas (land only, hospitality projects, etc.) are all available.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPPORTUNITIES (formerly Listings — reframed) -->
+  <section class="section listings" id="opportunities">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">What You'll Discover</p>
+        <h2 class="section-title">Opportunities on Your Trip</h2>
+        <p class="section-desc">These are real properties you'll visit on the ground. From buildable lots to turnkey luxury — see them in person.</p>
+      </div>
+
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="lot">Lots</button>
+        <button class="filter-btn" data-filter="home">Homes</button>
+        <button class="filter-btn" data-filter="commercial">Commercial</button>
+      </div>
+
+      <div class="listings-grid" id="listingsGrid">
+
+        <article class="listing-card" data-category="lot">
+          <div class="listing-img">
+            <img src="./assets/property-oceanfront.jpg" alt="Oceanfront lot in Redonda Bay" loading="lazy">
+            <span class="listing-badge">Best Value</span>
+          </div>
+          <div class="listing-body">
+            <div class="listing-location"><i data-lucide="map-pin"></i> Downtown Popoyo</div>
+            <h3 class="listing-title">Community Lots — Playa Popoyo</h3>
+            <p class="listing-desc">First-to-market community lots at the entrance of downtown Popoyo, with water and electricity access.</p>
+            <div class="listing-meta">
+              <span><i data-lucide="ruler"></i> 600 m²</span>
+              <span><i data-lucide="zap"></i> Utilities Ready</span>
+            </div>
+            <div class="listing-footer">
+              <span class="listing-price">From $15,000</span>
+              <button class="listing-cta" data-inquiry="Community Lots — Playa Popoyo | From $15,000">Details <i data-lucide="arrow-right"></i></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="listing-card" data-category="lot">
+          <div class="listing-img">
+            <img src="./assets/property-beachfront-lot.jpg" alt="Beachfront lot near Popoyo surf break" loading="lazy">
+            <span class="listing-badge">Beachfront</span>
+          </div>
+          <div class="listing-body">
+            <div class="listing-location"><i data-lucide="map-pin"></i> Playa Guasacate</div>
+            <h3 class="listing-title">Beachfront Lot — Beginners Bay</h3>
+            <p class="listing-desc">850 m² beachfront lot, one of the largest in the area. Water and power ready, steps from the surf.</p>
+            <div class="listing-meta">
+              <span><i data-lucide="ruler"></i> 850 m²</span>
+              <span><i data-lucide="waves"></i> Beachfront</span>
+            </div>
+            <div class="listing-footer">
+              <span class="listing-price">$235,000</span>
+              <button class="listing-cta" data-inquiry="Beachfront Lot — Beginners Bay | $235,000">Details <i data-lucide="arrow-right"></i></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="listing-card" data-category="home">
+          <div class="listing-img">
+            <img src="./assets/property-surf-house.jpg" alt="Surf house with ocean view in Popoyo" loading="lazy">
+            <span class="listing-badge">Turnkey</span>
+          </div>
+          <div class="listing-body">
+            <div class="listing-location"><i data-lucide="map-pin"></i> Surf Ranch Popoyo</div>
+            <h3 class="listing-title">Luxury Ocean View — Surf Ranch</h3>
+            <p class="listing-desc">Gorgeous 3-bed, 2-bath home where modern luxury meets the sea. Pool, furnished, walk to beach and surf.</p>
+            <div class="listing-meta">
+              <span><i data-lucide="bed-double"></i> 3 Bed</span>
+              <span><i data-lucide="bath"></i> 2 Bath</span>
+              <span><i data-lucide="waves"></i> Pool</span>
+            </div>
+            <div class="listing-footer">
+              <span class="listing-price">$274,000</span>
+              <button class="listing-cta" data-inquiry="Luxury Ocean View — Surf Ranch | $274,000">Details <i data-lucide="arrow-right"></i></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="listing-card" data-category="commercial">
+          <div class="listing-img">
+            <img src="./assets/property-casitas.jpg" alt="Multi-unit beachfront rental property" loading="lazy">
+            <span class="listing-badge">Income</span>
+          </div>
+          <div class="listing-body">
+            <div class="listing-location"><i data-lucide="map-pin"></i> Playa Guasacate</div>
+            <h3 class="listing-title">Multi-Unit Beachfront Compound</h3>
+            <p class="listing-desc">Three fully equipped casitas on the beach. Proven rental income, on-site management. Walk to Popoyo break.</p>
+            <div class="listing-meta">
+              <span><i data-lucide="bed-double"></i> 5 Bed</span>
+              <span><i data-lucide="bath"></i> 3 Bath</span>
+              <span><i data-lucide="trending-up"></i> Rental Income</span>
+            </div>
+            <div class="listing-footer">
+              <span class="listing-price">$250,000</span>
+              <button class="listing-cta" data-inquiry="Multi-Unit Beachfront Compound | $250,000">Details <i data-lucide="arrow-right"></i></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="listing-card" data-category="home">
+          <div class="listing-img">
+            <img src="./assets/property-ocean-view.jpg" alt="Modern home with ocean views in Popoyo" loading="lazy">
+            <span class="listing-badge">Reduced</span>
+          </div>
+          <div class="listing-body">
+            <div class="listing-location"><i data-lucide="map-pin"></i> Playa Guasacate</div>
+            <h3 class="listing-title">Beachfront Home — Guasacate</h3>
+            <p class="listing-desc">Oceanfront home on 1,060 m² with 3 bed/3 bath. Steps from the famous Popoyo break. Rental potential.</p>
+            <div class="listing-meta">
+              <span><i data-lucide="bed-double"></i> 3 Bed</span>
+              <span><i data-lucide="bath"></i> 3 Bath</span>
+              <span><i data-lucide="maximize-2"></i> 1,060 m²</span>
+            </div>
+            <div class="listing-footer">
+              <span class="listing-price">$199,000</span>
+              <button class="listing-cta" data-inquiry="Beachfront Home — Guasacate | $199,000">Details <i data-lucide="arrow-right"></i></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="listing-card" data-category="commercial">
+          <div class="listing-img">
+            <img src="./assets/property-sunset.jpg" alt="Beachfront hostal property for investment" loading="lazy">
+            <span class="listing-badge">Business</span>
+          </div>
+          <div class="listing-body">
+            <div class="listing-location"><i data-lucide="map-pin"></i> Playa Santana</div>
+            <h3 class="listing-title">Beachfront Hotel &amp; Restaurant</h3>
+            <p class="listing-desc">Turnkey hospitality business on 3,500+ m². 4 bed, 10 bath, bar, restaurant, pool. Strong cashflow.</p>
+            <div class="listing-meta">
+              <span><i data-lucide="bed-double"></i> 4 Bed</span>
+              <span><i data-lucide="utensils"></i> Restaurant</span>
+              <span><i data-lucide="waves"></i> Pool</span>
+            </div>
+            <div class="listing-footer">
+              <span class="listing-price">$1,350,000</span>
+              <button class="listing-cta" data-inquiry="Beachfront Hotel & Restaurant | $1,350,000">Details <i data-lucide="arrow-right"></i></button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="listings-trip-cta">
+        <p>Want to see these properties in person?</p>
+        <a href="#book" class="btn btn-primary">Book Your Investment Trip</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY INVEST -->
+  <section class="section why-invest" id="why-invest">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">Market Intelligence</p>
+        <h2 class="section-title">Why Nicaragua, Why Now</h2>
+        <p class="section-desc">The Emerald Coast is at an inflection point. Here's the data behind the opportunity you'll see firsthand.</p>
+      </div>
+
+      <div class="invest-grid">
+        <div class="invest-card">
+          <div class="invest-icon"><i data-lucide="trending-up"></i></div>
+          <h3>8–12% Annual Appreciation</h3>
+          <p>Coastal property prices are projected to grow 8–12% annually through 2029, with premium lots and beachfront homes leading the surge. Nicaragua's GDP growth of 3.5–4% and the 2025 Foreign Investment Law underpin this trajectory.</p>
+        </div>
+        <div class="invest-card">
+          <div class="invest-icon"><i data-lucide="route"></i></div>
+          <h3>$400M Coastal Highway</h3>
+          <p>A new highway connecting the Costa Rican border through San Juan del Sur and the entire Emerald Coast is rapidly being built, dramatically improving access and property values.</p>
+        </div>
+        <div class="invest-card">
+          <div class="invest-icon"><i data-lucide="shield-check"></i></div>
+          <h3>Full Foreign Ownership</h3>
+          <p>Foreigners hold the same ownership rights as Nicaraguan citizens under the Constitution (Art. 44) and Foreign Investment Law (Ley 344). Clear titled land available — always verify title and work with a local attorney.</p>
+        </div>
+        <div class="invest-card">
+          <div class="invest-icon"><i data-lucide="plane"></i></div>
+          <h3>Record Tourism Growth</h3>
+          <p>Nearly 2 million tourist arrivals in 2024, driving strong rental demand. Featured in Travel + Leisure (2025) and leading travel publications as an emerging surf and wellness destination.</p>
+        </div>
+        <div class="invest-card">
+          <div class="invest-icon"><i data-lucide="dollar-sign"></i></div>
+          <h3>Unmatched Value</h3>
+          <p>Raw land from ~$25/m². Compared to Costa Rica's Guanacaste, the Emerald Coast offers similar coastline at a fraction of the price — but the gap is closing fast.</p>
+        </div>
+        <div class="invest-card">
+          <div class="invest-icon"><i data-lucide="home"></i></div>
+          <h3>Gated Communities</h3>
+          <p>Rancho Santana (2,700 acres) and Hacienda Iguana offer resort-grade amenities: golf, pools, security, and beachfront access with proven appreciation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section class="section map-section" id="map">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">Explore the Region</p>
+        <h2 class="section-title">Where You'll Be</h2>
+        <p class="section-desc">The Emerald Coast is your primary investment zone. Northern gems like El Tránsito and Playa San Diego available for extended trips.</p>
+      </div>
+      <div class="map-container" id="mapContainer"></div>
+      <div class="map-legend">
+        <div class="map-legend-item">
+          <div class="map-legend-dot map-legend-dot--teal"></div>
+          <span>Surf Breaks</span>
+        </div>
+        <div class="map-legend-item">
+          <div class="map-legend-dot map-legend-dot--orange"></div>
+          <span>Gated Communities</span>
+        </div>
+        <div class="map-legend-item">
+          <div class="map-legend-dot map-legend-dot--blue"></div>
+          <span>Northern Zones (Optional)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE EXPERIENCE (formerly Lifestyle — reframed) -->
+  <section class="section lifestyle" id="experience">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">The Experience</p>
+        <h2 class="section-title">More Than Business</h2>
+        <p class="section-desc">Your investment trip isn't just meetings and property tours. It's a taste of the life that comes with it.</p>
+      </div>
+      <div class="lifestyle-grid">
+        <div class="lifestyle-card lifestyle-card--large">
+          <img src="./assets/property-gallery.jpg" alt="Beachfront living in Popoyo" loading="lazy">
+          <div class="lifestyle-card-content">
+            <h3>World-Class Surf</h3>
+            <p>Consistent offshore winds 300+ days a year. Popoyo, Playa Colorado, Playa Santana — breaks for every level from beginner to barrel hunter.</p>
+          </div>
+        </div>
+        <div class="lifestyle-card">
+          <div class="lifestyle-card-content lifestyle-card-content--filled">
+            <i data-lucide="sun"></i>
+            <h3>Year-Round Summer</h3>
+            <p>Daytime highs of 86–90°F year-round. Tropical dry season November–May. Perfect for the digital nomad or retiree seeking warm weather 365 days.</p>
+          </div>
+        </div>
+        <div class="lifestyle-card">
+          <div class="lifestyle-card-content lifestyle-card-content--filled">
+            <i data-lucide="heart"></i>
+            <h3>Low Cost of Living</h3>
+            <p>Groceries, healthcare, and daily expenses at a fraction of US or Europe. A high quality of life on a modest budget.</p>
+          </div>
+        </div>
+        <div class="lifestyle-card">
+          <div class="lifestyle-card-content lifestyle-card-content--filled">
+            <i data-lucide="users"></i>
+            <h3>Growing Expat Community</h3>
+            <p>A welcoming international community of surfers, entrepreneurs, retirees, and remote workers from North America, Europe, and beyond.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SURF DESTINATIONS -->
+  <section class="section surf-destinations" id="surf">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">Beyond the Emerald Coast</p>
+        <h2 class="section-title">Explore Northern Surf Zones</h2>
+        <p class="section-desc">Your trip can include additional surf destinations for a broader investment perspective.</p>
+      </div>
+
+      <div class="surf-grid">
+        <div class="surf-card">
+          <div class="surf-card-badge">All Levels</div>
+          <div class="surf-card-icon"><i data-lucide="waves"></i></div>
+          <h3>El Tránsito</h3>
+          <p class="surf-card-subtitle">North Coast • León Department</p>
+          <p class="surf-card-desc">Authentic fishing village with consistent beach break. Gentle to medium barrels work year-round. Strong Québec expat community — perfect for boutique/community projects. Quiet, minimal tourist infrastructure.</p>
+          <div class="surf-card-meta">
+            <span><i data-lucide="navigation"></i> 3–4h from SJS</span>
+            <span><i data-lucide="trending-down"></i> Budget-Friendly</span>
+          </div>
+          <div class="surf-card-tags">
+            <span class="tag tag--green">Beach Break</span>
+            <span class="tag tag--blue">Year-Round</span>
+            <span class="tag tag--purple">Expat Hub</span>
+          </div>
+        </div>
+
+        <div class="surf-card surf-card--featured">
+          <div class="surf-card-badge">Emerald Coast</div>
+          <div class="surf-card-icon"><i data-lucide="star"></i></div>
+          <h3>Popoyo &amp; Guasacate</h3>
+          <p class="surf-card-subtitle">Primary Investment Zone</p>
+          <p class="surf-card-desc">World-famous breaks from beginner (Beginners Bay) to advanced barrels (Popoyo, Colorado). The main focus of your investment trip — most properties, gated communities, and expat infrastructure are here.</p>
+          <div class="surf-card-meta">
+            <span><i data-lucide="navigation"></i> ~1h from SJS</span>
+            <span><i data-lucide="trending-up"></i> Mid-High Budget</span>
+          </div>
+          <div class="surf-card-tags">
+            <span class="tag tag--orange">Advanced</span>
+            <span class="tag tag--blue">Consistent</span>
+            <span class="tag tag--purple">Infrastructure</span>
+          </div>
+        </div>
+
+        <div class="surf-card">
+          <div class="surf-card-badge">Int–Advanced</div>
+          <div class="surf-card-icon"><i data-lucide="flame"></i></div>
+          <h3>Playa San Diego</h3>
+          <p class="surf-card-subtitle">Managua Department</p>
+          <p class="surf-card-desc">Rocky/coral bottom with fast lefts. Intermediate to advanced only — ideal for getting tubed. Less crowded than Maderas. Premium feel, higher ROI potential for hospitality projects.</p>
+          <div class="surf-card-meta">
+            <span><i data-lucide="navigation"></i> ~2.5h from SJS</span>
+            <span><i data-lucide="trending-up"></i> Mid-High Budget</span>
+          </div>
+          <div class="surf-card-tags">
+            <span class="tag tag--red">Barrels</span>
+            <span class="tag tag--gray">Less Crowded</span>
+            <span class="tag tag--purple">Premium</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="surf-comparison">
+        <h3>Investment by Surf Zone</h3>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Zone</th>
+              <th>Wave Level</th>
+              <th>Vibe</th>
+              <th>Budget</th>
+              <th>From SJS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>El Tránsito</strong></td>
+              <td>All Levels</td>
+              <td>Authentic, Québécois, Quiet</td>
+              <td>Low–Mid</td>
+              <td>~3–4h</td>
+            </tr>
+            <tr class="highlight">
+              <td><strong>Popoyo / Guasacate</strong></td>
+              <td>Int–Advanced</td>
+              <td>International, Active</td>
+              <td>Mid–High</td>
+              <td>~1h</td>
+            </tr>
+            <tr>
+              <td><strong>Playa San Diego</strong></td>
+              <td>Int–Advanced</td>
+              <td>Exclusive, Uncrowded</td>
+              <td>Mid–High</td>
+              <td>~2.5h</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="surf-cta">
+        <p>Interested in exploring northern surf zones? Add extra days to your trip.</p>
+        <a href="#book" class="btn btn-outline">Extend Your Trip</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICE COMPARISON -->
+  <section class="section comparison">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">Price Guide</p>
+        <h2 class="section-title">What Your Budget Gets You</h2>
+        <p class="section-desc">See these properties in person on your trip. We'll match visits to your investment range.</p>
+      </div>
+      <div class="comparison-grid">
+        <div class="comparison-card">
+          <div class="comparison-tier">Starter</div>
+          <div class="comparison-range">$15K – $50K</div>
+          <ul class="comparison-list">
+            <li><i data-lucide="check"></i> Buildable lots (600–2,000 m²)</li>
+            <li><i data-lucide="check"></i> Water &amp; electricity access</li>
+            <li><i data-lucide="check"></i> Minutes from the beach</li>
+            <li><i data-lucide="check"></i> Downtown Popoyo or Guasacate</li>
+          </ul>
+        </div>
+        <div class="comparison-card comparison-card--featured">
+          <div class="comparison-tier">Sweet Spot</div>
+          <div class="comparison-range">$60K – $275K</div>
+          <ul class="comparison-list">
+            <li><i data-lucide="check"></i> Turnkey homes (2–3 bed)</li>
+            <li><i data-lucide="check"></i> Ocean views or beachfront</li>
+            <li><i data-lucide="check"></i> Rental income potential</li>
+            <li><i data-lucide="check"></i> Furnished &amp; move-in ready</li>
+          </ul>
+        </div>
+        <div class="comparison-card">
+          <div class="comparison-tier">Premium</div>
+          <div class="comparison-range">$275K – $1.4M+</div>
+          <ul class="comparison-list">
+            <li><i data-lucide="check"></i> Luxury beachfront estates</li>
+            <li><i data-lucide="check"></i> Hotels &amp; commercial</li>
+            <li><i data-lucide="check"></i> Gated communities</li>
+            <li><i data-lucide="check"></i> High-return businesses</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOK YOUR TRIP CTA -->
+  <section class="section cta-section" id="book">
+    <div class="container">
+      <div class="cta-content">
+        <h2 class="cta-title">Ready to See It for Yourself?</h2>
+        <p class="cta-desc">Book your NicaWise investment trip. We handle everything — flights guidance, accommodation, property tours, legal introductions, food, and leisure. You just show up.</p>
+        <div class="contact-card">
+          <div class="contact-card-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <h3>Book Your Trip</h3>
+          <p>Reach out to schedule your discovery call. We'll design a trip around your goals, budget, and timeline.</p>
+          <div class="contact-btns">
+            <a href="https://wa.me/message/AAA7TSNYEKLWK1" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-lg">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp Us
+            </a>
+            <a href="mailto:epicurewise@gmail.com?subject=NicaWise%20Investment%20Trip%20Inquiry" class="btn btn-primary btn-lg"><i data-lucide="mail"></i> Email Us</a>
+          </div>
+          <span class="contact-email">epicurewise@gmail.com</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INQUIRY MODAL -->
+  <div class="modal-overlay" id="inquiryModal">
+    <div class="modal">
+      <button class="modal-close" id="modalClose" aria-label="Close"><i data-lucide="x"></i></button>
+      <div class="modal-header">
+        <div class="modal-icon"><i data-lucide="home"></i></div>
+        <h2 class="modal-title">Visit This Property on Your Trip</h2>
+        <p class="modal-property" id="modalProperty"></p>
+      </div>
+      <div class="modal-body">
+        <p>Interested? We'll add this property to your personalized trip itinerary. Get in touch to schedule your investment visit.</p>
+        <a href="https://wa.me/message/AAA7TSNYEKLWK1" id="modalWhatsAppBtn" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-lg btn-full">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us
+        </a>
+        <div class="modal-divider"><span>or email</span></div>
+        <a href="" id="modalEmailBtn" class="btn btn-outline-dark btn-lg btn-full"><i data-lucide="mail"></i> Send Email</a>
+        <div class="modal-alt">
+          <p>Email us directly at</p>
+          <a href="mailto:epicurewise@gmail.com" class="modal-email-link">epicurewise@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a href="https://wa.me/message/AAA7TSNYEKLWK1" target="_blank" rel="noopener noreferrer" class="fab-whatsapp" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <svg width="28" height="28" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="2" width="32" height="32" rx="8" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <path d="M10 26 V14 L18 8 L26 14 V26" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M15 26 V20 H21 V26" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="18" cy="15" r="2" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          </svg>
+          <span>NicaWise</span>
+        </div>
+        <p class="footer-tagline">Curated investment trips to Nicaragua's Emerald Coast.</p>
+        <p class="footer-disclaimer">This site provides informational market data. All property details sourced from public listings. Verify independently before investing. Prices as of early 2026.</p>
+        <div class="footer-links">
+          <a href="mailto:epicurewise@gmail.com">epicurewise@gmail.com</a>
+          <a href="https://wa.me/message/AAA7TSNYEKLWK1" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <a href="https://popoyorealty.com" target="_blank" rel="noopener noreferrer">Popoyo Realty</a>
+        </div>
+        <p class="footer-attr">
+          <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
