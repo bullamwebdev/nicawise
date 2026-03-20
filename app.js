@@ -49,23 +49,36 @@
   }
 
   // -------------------------------------------
-  // HEADER SCROLL BEHAVIOR
+  // HEADER SCROLL BEHAVIOR (FIXED)
+  // Hide header sooner when scrolling down
   // -------------------------------------------
   const header = document.getElementById('header');
   let lastScroll = 0;
+  let scrollThreshold = 80;
 
   window.addEventListener('scroll', () => {
     const curr = window.scrollY;
-    if (curr > 80) {
+    
+    // Add blur background after 50px
+    if (curr > 50) {
       header.classList.add('header--scrolled');
     } else {
       header.classList.remove('header--scrolled');
     }
-    if (curr > lastScroll && curr > 300) {
+    
+    // Hide when scrolling down (after threshold)
+    // Show when scrolling up or at top
+    const scrollingDown = curr > lastScroll;
+    const scrollingUp = curr < lastScroll;
+    const pastThreshold = curr > scrollThreshold;
+    const atTop = curr < 20;
+    
+    if (scrollingDown && pastThreshold) {
       header.classList.add('header--hidden');
-    } else {
+    } else if (scrollingUp || atTop) {
       header.classList.remove('header--hidden');
     }
+    
     lastScroll = curr;
   }, { passive: true });
 
