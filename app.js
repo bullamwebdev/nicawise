@@ -49,37 +49,57 @@
   }
 
   // -------------------------------------------
-  // HEADER SCROLL BEHAVIOR (FIXED)
-  // Hide header sooner when scrolling down
+  // HEADER SCROLL BEHAVIOR (PROFESSIONAL)
+  // - Debounced for iOS momentum scroll
+  // - Mobile-responsive thresholds
+  // - No flicker on fast scroll
   // -------------------------------------------
   const header = document.getElementById('header');
-  let lastScroll = 0;
-  let scrollThreshold = 80;
+  let lastScrollY = 0;
+  let ticking = false;
+  let scrollThreshold = window.innerWidth < 768 ? 60 : 100;
+  const blurThreshold = 50;
+  const topThreshold = 15;
+  const hideDelay = 80; // ms - prevents flicker on fast scroll
 
-  window.addEventListener('scroll', () => {
-    const curr = window.scrollY;
-    
-    // Add blur background after 50px
-    if (curr > 50) {
+  function updateHeader() {
+    const scrollY = window.scrollY;
+    const scrollingDown = scrollY > lastScrollY;
+    const scrollingUp = scrollY < lastScrollY;
+    const pastThreshold = scrollY > scrollThreshold;
+    const pastBlur = scrollY > blurThreshold;
+    const nearTop = scrollY < topThreshold;
+
+    // Blur background state
+    if (pastBlur) {
       header.classList.add('header--scrolled');
     } else {
       header.classList.remove('header--scrolled');
     }
-    
-    // Hide when scrolling down (after threshold)
-    // Show when scrolling up or at top
-    const scrollingDown = curr > lastScroll;
-    const scrollingUp = curr < lastScroll;
-    const pastThreshold = curr > scrollThreshold;
-    const atTop = curr < 20;
-    
+
+    // Hide/show logic with momentum protection
     if (scrollingDown && pastThreshold) {
       header.classList.add('header--hidden');
-    } else if (scrollingUp || atTop) {
+    } else if (scrollingUp || nearTop) {
       header.classList.remove('header--hidden');
     }
-    
-    lastScroll = curr;
+
+    lastScrollY = scrollY;
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(updateHeader);
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Update threshold on resize
+  window.addEventListener('resize', () => {
+    scrollThreshold = window.innerWidth < 768 ? 60 : 100;
   }, { passive: true });
 
   // -------------------------------------------

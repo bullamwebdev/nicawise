@@ -259,14 +259,20 @@ html {
   right: 0;
   z-index: 100;
   padding: var(--space-4) 0;
-  transition: background 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out), transform 0.3s var(--ease-out);
+  transition: 
+    background 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    -webkit-backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, background, box-shadow;
 }
 
 .header--scrolled {
-  background: color-mix(in srgb, var(--color-bg) 90%, transparent);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: var(--shadow-sm);
+  background: color-mix(in srgb, var(--color-bg) 92%, transparent);
+  backdrop-filter: blur(20px) saturate(1.8);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  box-shadow: 0 1px 3px rgba(26,24,20,0.08);
 }
 
 .header--hidden {
