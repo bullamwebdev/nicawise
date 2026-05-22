@@ -631,20 +631,20 @@ WhatsApp Us
   // Leaflet Map
   const mapEl=document.getElementById('mapContainer');
   if(mapEl&&typeof L!=='undefined'){
-    const map=L.map('mapContainer',{scrollWheelZoom:false}).setView([11.38,-86.0],13);
+    const map=L.map('mapContainer',{scrollWheelZoom:false}).setView([11.40,-86.02],13);
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
        {attribution:'&copy; OpenStreetMap & CartoDB',subdomains:'abcd',maxZoom:19}).addTo(map);
     const points=[
-       {name:'1. San Juan del Sur',realLat:11.252,realLng:-85.871,lat:11.252,lng:-85.831},
-       {name:'2. Popoyo / Guasacate',realLat:11.383,realLng:-86.031,lat:11.383,lng:-85.991},
-       {name:'3. Rancho Santana',realLat:11.442,realLng:-86.085,lat:11.300,lng:-86.010},
-       {name:'4. Hacienda Iguana',realLat:11.414,realLng:-86.052,lat:11.320,lng:-86.020},
-       {name:'5. El Tránsito',realLat:12.056,realLng:-86.709,lat:12.056,lng:-86.669}
+       {name:'1. San Juan del Sur',lat:11.252,lng:-85.831},
+       {name:'2. Popoyo / Guasacate',lat:11.383,lng:-85.991},
+       {name:'3. Rancho Santana',lat:11.442,lng:-86.045},
+       {name:'4. Hacienda Iguana',lat:11.414,lng:-86.012},
+       {name:'5. El Tránsito',lat:12.056,lng:-86.669}
     ];
     // Custom numbered pin icons (visually calibrated for CartoDB dark tile coastline offset)
     points.forEach((p,idx)=>{
        const pin=L.divIcon({className:'',html:'<div style="width:28px;height:28px;border-radius:50%;background:#0dbda3;border:2px solid #fff;color:#0c1117;font-weight:700;font-size:13px;font-family:General Sans,sans-serif;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.4);">'+(idx+1)+'</div>',iconSize:[28,28],iconAnchor:[14,14]});
-       L.marker([p.lat,p.lng],{icon:pin}).addTo(map).bindPopup('<strong>'+p.name+'</strong><br><small>Real: '+p.realLat.toFixed(3)+', '+p.realLng.toFixed(3)+'</small>');
+       L.marker([p.lat,p.lng],{icon:pin}).addTo(map).bindPopup('<strong>'+p.name+'</strong>');
     });
   }
 
