@@ -208,13 +208,6 @@ img { display:block; max-width:100%; height:auto; }
 .fab { position:fixed; bottom:2rem; right:2rem; width:56px; height:56px; background:#25d366; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; box-shadow:0 4px 20px rgba(37,211,102,0.4); transition:all var(--transition-smooth); z-index:50; }
 .fab:hover { transform:scale(1.1) rotate(-5deg); box-shadow:0 8px 30px rgba(37,211,102,0.5); }
 
-/* LANGUAGE TOGGLE */
-.lang-toggle { display:flex; gap:2px; background:var(--color-surface-2); border-radius:var(--radius-sm); border:1px solid var(--color-border); padding:3px; }
-.lang-toggle button { background:transparent; border:none; color:var(--color-text-faint); font-family:var(--font-body); font-size:0.75rem; font-weight:600; padding:0.35rem 0.6rem; border-radius:var(--radius-sm); cursor:pointer; transition:all var(--transition-fast); }
-.lang-toggle button.active { background:var(--color-accent); color:#fff; }
-.lang-toggle button:hover:not(.active) { color:var(--color-text); }
-@media(max-width:768px){ .lang-toggle button { padding: 0.3rem 0.45rem; font-size: 0.7rem; } }
-
 /* ANIMATIONS */
 .reveal { opacity:1; transform:translateY(0); will-change:transform,opacity; }
 .stagger-item { opacity:1; transform:translateY(0); will-change:transform,opacity; }
@@ -248,12 +241,11 @@ img { display:block; max-width:100%; height:auto; }
       <span>NicaWise</span>
     </a>
     <nav class="nav" id="nav">
-      <a href="#how-it-works" class="nav-link" data-i18n="nav_how">How It Works</a>
-      <a href="#opportunities" class="nav-link" data-i18n="nav_opp">Opportunities</a>
-      <a href="#why-invest" class="nav-link" data-i18n="nav_why">Why Invest</a>
-      <a href="#surf" class="nav-link" data-i18n="nav_surf">Surf Zones</a>
+      <a href="#how-it-works" class="nav-link">How It Works</a>
+      <a href="#opportunities" class="nav-link">Opportunities</a>
+      <a href="#why-invest" class="nav-link">Why Invest</a>
+      <a href="#surf" class="nav-link">Surf Zones</a>
       <a href="#book" class="nav-link nav-link--cta">Book a Trip</a>
-    <div class="lang-toggle" id="langToggle"><button data-lang="en" class="active">EN</button><button data-lang="fr">FR</button><button data-lang="es">ES</button></div>
     </nav>
     <button class="mobile-menu-btn" id="menuBtn"><i data-lucide="menu"></i></button>
   </div>
@@ -263,30 +255,30 @@ img { display:block; max-width:100%; height:auto; }
   <div class="hero-bg"><img src="./assets/hero.jpg" alt="Nicaragua Emerald Coast" loading="eager"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <p class="hero-tag" data-i18n="hero_tag">Investment Trip Agency</p>
-    <h1 class="hero-title" data-i18n="hero_title">See It. Feel It.<br><span>Invest in It.</span></h1>
-    <p class="hero-subtitle" data-i18n="hero_subtitle">Curated investment trips to Nicaragua's Emerald Coast. We handle everything — land visits, lawyer introductions, expat connections, food, and leisure — so you can focus on building your tropical portfolio.</p>
+    <p class="hero-tag">Investment Trip Agency</p>
+    <h1 class="hero-title">See It. Feel It.<br><span>Invest in It.</span></h1>
+    <p class="hero-subtitle">Curated investment trips to Nicaragua's Emerald Coast. We handle everything — land visits, lawyer introductions, expat connections, food, and leisure — so you can focus on building your tropical portfolio.</p>
     <div class="hero-actions">
-      <a href="#book" class="btn btn-primary" data-i18n="btn_book">Book Your Trip</a>
-      <a href="#how-it-works" class="btn btn-outline" data-i18n="btn_learn">How It Works</a>
+      <a href="#book" class="btn btn-primary">Book Your Trip</a>
+      <a href="#how-it-works" class="btn btn-outline">How It Works</a>
     </div>
   </div>
 </section>
 
 <section class="stat-strip" id="stats">
   <div class="stat-strip-inner">
-    <div class="stat-item reveal"><div class="stat-num">8–12%</div><div class="stat-label" data-i18n="stat_1_label">Annual Property Appreciation</div></div>
-    <div class="stat-item reveal"><div class="stat-num">$15K</div><div class="stat-label" data-i18n="stat_2_label">Minimum Entry Point</div></div>
-    <div class="stat-item reveal"><div class="stat-num">$400M</div><div class="stat-label" data-i18n="stat_3_label">Coastal Highway Investment</div></div>
-    <div class="stat-item reveal"><div class="stat-num">2M+</div><div class="stat-label" data-i18n="stat_4_label">Annual Tourist Arrivals</div></div>
+    <div class="stat-item reveal"><div class="stat-num">8–12%</div><div class="stat-label">Annual Property Appreciation</div></div>
+    <div class="stat-item reveal"><div class="stat-num">$15K</div><div class="stat-label">Minimum Entry Point</div></div>
+    <div class="stat-item reveal"><div class="stat-num">$400M</div><div class="stat-label">Coastal Highway Investment</div></div>
+    <div class="stat-item reveal"><div class="stat-num">2M+</div><div class="stat-label">Annual Tourist Arrivals</div></div>
   </div>
 </section>
 
 <section class="section" id="how-it-works">
   <div class="section-header">
-    <p class="section-tag" data-i18n="process_tag">The Process</p>
-    <h2 class="section-title" data-i18n="process_title">How Your Trip Works</h2>
-    <p class="section-desc" data-i18n="process_desc">From your first inquiry to closing — we handle the logistics so you can focus on the opportunity.</p>
+    <p class="section-tag">The Process</p>
+    <h2 class="section-title">How Your Trip Works</h2>
+    <p class="section-desc">From your first inquiry to closing — we handle the logistics so you can focus on the opportunity.</p>
   </div>
   <div class="how-grid">
     <div class="how-card stagger-item">
@@ -311,7 +303,7 @@ img { display:block; max-width:100%; height:auto; }
     </div>
     <div class="how-card stagger-item">
       <div class="how-card-icon"><i data-lucide="users"></i></div>
-      <h5>Expat Network</h5>
+      <h5. Expat Network</h3>
       <p>Dinner with established expats who've already made the move. Get the unfiltered local intel — costs, challenges, wins, and warnings.</p>
 </div>
 <div class="how-card stagger-item">
@@ -324,9 +316,9 @@ img { display:block; max-width:100%; height:auto; }
 
 <section class="section" id="opportunities">
 <div class="section-header">
-<p class="section-tag" data-i18n="market_tag">Current Market</p>
-<h2 class="section-title" data-i18n="market_title">Investment Opportunities</h2>
-<p class="section-desc" data-i18n="market_desc">Handpicked properties across the Emerald Coast. All priced in USD. All verified for clear title readiness.</p>
+<p class="section-tag">Current Market</p>
+<h2 class="section-title">Investment Opportunities</h2>
+<p class="section-desc">Handpicked properties across the Emerald Coast. All priced in USD. All verified for clear title readiness.</p>
 </div>
 <div class="opp-grid">
 <div class="opp-card stagger-item">
@@ -376,9 +368,9 @@ img { display:block; max-width:100%; height:auto; }
 
 <section class="section" id="why-invest">
 <div class="section-header">
-<p class="section-tag" data-i18n="intel_tag">Market Intelligence</p>
-<h2 class="section-title" data-i18n="intel_title">Why Nicaragua, Why Now</h2>
-<p class="section-desc" data-i18n="intel_desc">The Emerald Coast is at an inflection point. Here is the data behind the opportunity you'll see firsthand.</p>
+<p class="section-tag">Market Intelligence</p>
+<h2 class="section-title">Why Nicaragua, Why Now</h2>
+<p class="section-desc">The Emerald Coast is at an inflection point. Here is the data behind the opportunity you'll see firsthand.</p>
 </div>
 <div class="invest-grid">
 <div class="invest-card stagger-item">
@@ -416,9 +408,9 @@ img { display:block; max-width:100%; height:auto; }
 
 <section class="section roi-section" id="roi">
 <div class="section-header">
-<p class="section-tag" data-i18n="roi_tag">ROI Analysis</p>
-<h2 class="section-title" data-i18n="roi_title">Projected Returns</h2>
-<p class="section-desc" data-i18n="roi_desc">Conservative projections based on 2024–2025 market data from local title offices and comparable sales.</p>
+<p class="section-tag">ROI Analysis</p>
+<h2 class="section-title">Projected Returns</h2>
+<p class="section-desc">Conservative projections based on 2024–2025 market data from local title offices and comparable sales.</p>
 </div>
 <div class="roi-grid">
 <div class="roi-chart stagger-item">
@@ -461,9 +453,9 @@ img { display:block; max-width:100%; height:auto; }
 
 <section class="section comparison" id="compare">
 <div class="section-header">
-<p class="section-tag" data-i18n="price_tag">Price Guide</p>
-<h2 class="section-title" data-i18n="price_title">What Your Budget Gets You</h2>
-<p class="section-desc" data-i18n="price_desc">See these properties in person on your trip. We'll match visits to your investment range.</p>
+<p class="section-tag">Price Guide</p>
+<h2 class="section-title">What Your Budget Gets You</h2>
+<p class="section-desc">See these properties in person on your trip. We'll match visits to your investment range.</p>
 </div>
 <div class="compare-grid">
 <div class="compare-card stagger-item">
@@ -504,18 +496,18 @@ img { display:block; max-width:100%; height:auto; }
 
 <section class="section map-section" id="map">
 <div class="section-header">
-<p class="section-tag" data-i18n="map_tag">Explore the Region</p>
-<h2 class="section-title" data-i18n="map_title">Your Investment Zone</h2>
-<p class="section-desc" data-i18n="map_desc">The Emerald Coast stretches from San Juan del Sur to the Costa Rican border — Nicaragua's most promising shoreline.</p>
+<p class="section-tag">Explore the Region</p>
+<h2 class="section-title">Your Investment Zone</h2>
+<p class="section-desc">The Emerald Coast stretches from San Juan del Sur to the Costa Rican border — Nicaragua's most promising shoreline.</p>
 </div>
 <div class="map-container" id="mapContainer"></div>
 </section>
 
 <section class="section" id="surf">
 <div class="section-header">
-<p class="section-tag" data-i18n="surf_tag">Beyond the Beach</p>
+<p class="section-tag">Beyond the Beach</p>
 <h2 class="section-title">Surf Destinations & Lifestyle</h2>
-<p class="section-desc" data-i18n="surf_desc">Your trip blends business with pleasure. The Emerald Coast delivers world-class surf, year-round sun, and a growing expat community.</p>
+<p class="section-desc">Your trip blends business with pleasure. The Emerald Coast delivers world-class surf, year-round sun, and a growing expat community.</p>
 </div>
 <div class="surf-grid">
 <div class="surf-card stagger-item">
@@ -544,9 +536,9 @@ img { display:block; max-width:100%; height:auto; }
 
 <section class="section" id="experience">
 <div class="section-header">
-<p class="section-tag" data-i18n="exp_tag">The Experience</p>
-<h2 class="section-title" data-i18n="exp_title">More Than Business</h2>
-<p class="section-desc" data-i18n="exp_desc">Your investment trip is designed around serious due diligence — but it is also designed to show you why people stay.</p>
+<p class="section-tag">The Experience</p>
+<h2 class="section-title">More Than Business</h2>
+<p class="section-desc">Your investment trip is designed around serious due diligence — but it is also designed to show you why people stay.</p>
 </div>
 <div class="exp-grid">
 <div class="exp-card stagger-item">
@@ -574,15 +566,15 @@ img { display:block; max-width:100%; height:auto; }
 
 <section class="section cta-section" id="book">
 <div class="cta-content">
-<p class="section-tag" data-i18n="cta_tag">Ready to See It?</p>
-<h2 class="cta-title" data-i18n="cta_title">Book Your Discovery Trip</h2>
-<p class="cta-desc" data-i18n="cta_desc">We handle flights guidance, accommodation, property tours, legal introductions, and local experiences. You just show up with your eyes open.</p>
+<p class="section-tag">Ready to See It?</p>
+<h2 class="cta-title">Book Your Discovery Trip</h2>
+<p class="cta-desc">We handle flights guidance, accommodation, property tours, legal introductions, and local experiences. You just show up with your eyes open.</p>
 <div class="cta-btns">
 <a href="https://wa.me/message/AAA7TSNYEKLWK1" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-large">
 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 WhatsApp Us
 </a>
-<a href="https://calendly.com/genwiseai/30min?month=2026-05" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large" data-i18n-target="cta_call"><i data-lucide="calendar"></i> Book a Call</a>
+<a href="https://calendly.com/genwiseai/30min?month=2026-05" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large"><i data-lucide="calendar"></i> Book a Call</a>
 </div>
 <p style="margin-top:1.5rem; font-size:0.85rem; color:var(--color-text-faint);">epicurewise@gmail.com &bull; Typical response: under 4 hours</p>
 </div>
@@ -594,7 +586,7 @@ WhatsApp Us
 <svg width="28" height="28" viewBox="0 0 36 36" fill="none"><rect x="2" y="2" width="32" height="32" rx="8" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M10 26 V14 L18 8 L26 14 V26" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 26 V20 H21 V26" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="18" cy="15" r="2" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
 <span>NicaWise</span>
 </div>
-<p class="footer-tagline" data-i18n="footer_tagline">Curated investment trips to Nicaragua's Emerald Coast.</p>
+<p class="footer-tagline">Curated investment trips to Nicaragua's Emerald Coast.</p>
 <div class="footer-links">
 <a href="https://calendly.com/genwiseai/30min?month=2026-05" target="_blank" rel="noopener">Book a Call</a>
 <a href="https://wa.me/message/AAA7TSNYEKLWK1" target="_blank" rel="noopener">WhatsApp</a>
@@ -645,163 +637,26 @@ WhatsApp Us
     });
   }
 
-  // Performance: mark elements for animation only if JS loads
-  document.body.classList.add('js-ready');
-  document.querySelectorAll('.reveal, .stagger-item').forEach(el=>el.classList.add('anim-hidden'));
-
   // GSAP Animations
   if(typeof gsap!=='undefined'&&typeof ScrollTrigger!=='undefined'){
     gsap.registerPlugin(ScrollTrigger);
 
-    // Hero sequence (faster, snappier)
-    gsap.to('.hero-tag',{opacity:1,y:0,duration:0.6,delay:0.1,ease:'power2.out'});
-    gsap.to('.hero-title',{opacity:1,y:0,duration:0.7,delay:0.25,ease:'power2.out'});
-    gsap.to('.hero-subtitle',{opacity:1,y:0,duration:0.6,delay:0.4,ease:'power2.out'});
-    gsap.to('.hero-actions',{opacity:1,y:0,duration:0.5,delay:0.55,ease:'power2.out'});
+    // Hero sequence
+    gsap.to('.hero-tag',{opacity:1,y:0,duration:0.8,delay:0.2,ease:'power3.out'});
+    gsap.to('.hero-title',{opacity:1,y:0,duration:1,delay:0.4,ease:'power3.out'});
+    gsap.to('.hero-subtitle',{opacity:1,y:0,duration:0.8,delay:0.6,ease:'power3.out'});
+    gsap.to('.hero-actions',{opacity:1,y:0,duration:0.8,delay:0.8,ease:'power3.out'});
 
-    // Reveal sections (once:true for performance, no re-trigger)
+    // Reveal sections
     gsap.utils.toArray('.reveal').forEach(el=>{
-      gsap.to(el,{scrollTrigger:{trigger:el,start:'top 85%',once:true},opacity:1,y:0,duration:0.6,ease:'power2.out'});
+      gsap.to(el,{scrollTrigger:{trigger:el,start:'top 85%',toggleActions:'play none none none'},opacity:1,y:0,duration:0.8,ease:'power3.out'});
     });
 
-    // Stagger items (once:true, faster duration)
+    // Stagger items
     gsap.utils.toArray('.stagger-item').forEach((el,i)=>{
-      gsap.to(el,{scrollTrigger:{trigger:el,start:'top 90%',once:true},opacity:1,y:0,duration:0.5,delay:i*0.06,ease:'power2.out'});
+      gsap.to(el,{scrollTrigger:{trigger:el,start:'top 90%',toggleActions:'play none none none'},opacity:1,y:0,duration:0.7,delay:i*0.08,ease:'power3.out'});
     });
   }
-  // i18n Translation System
-  const i18n = {
-    en: {
-      nav_how:'How It Works', nav_opp:'Opportunities', nav_why:'Why Invest', nav_surf:'Surf Zones', nav_book:'Book a Trip',
-      hero_tag:'Investment Trip Agency', hero_title:'See It. Feel It.<br><span>Invest in It.</span>', hero_subtitle:"Curated investment trips to Nicaragua's Emerald Coast. We handle everything — land visits, lawyer introductions, expat connections, food, and leisure — so you can focus on building your tropical portfolio.",
-      btn_book:'Book Your Trip', btn_learn:'How It Works',
-      stat_1_label:'Annual Property Appreciation', stat_2_label:'Minimum Entry Point', stat_3_label:'Coastal Highway Investment', stat_4_label:'Annual Tourist Arrivals',
-      process_tag:'The Process', process_title:'How Your Trip Works', process_desc:'From your first inquiry to closing — we handle the logistics so you can focus on the opportunity.',
-      step1_title:'Discovery Call', step1_desc:'30-min video call to understand your goals, budget, and timeline.',
-      step2_title:'Touch Down', step2_desc:'We pick you up from Managua or Costa Rica. Accommodation and itinerary locked.',
-      step3_title:'See the Land', step3_desc:'Visit handpicked properties matched to your criteria. Walk the lots, feel the surf.',
-      step4_title:'Legal Due Diligence', step4_desc:'Introduction to vetted local attorneys for title, escrow, and closing.',
-      step5_title:'Expat Network', step5_desc:'Dinner with established expats. Get the unfiltered local intel.',
-      step6_title:'Close & Connect', step6_desc:'Post-trip support for 90 days. Property managers, builders, community.',
-      market_tag:'Current Market', market_title:'Investment Opportunities', market_desc:'Handpicked properties across the Emerald Coast. All priced in USD. All verified for clear title readiness.',
-      intel_tag:'Market Intelligence', intel_title:'Why Nicaragua, Why Now', intel_desc:'The Emerald Coast is at an inflection point. Here is the data behind the opportunity.',
-      roi_tag:'ROI Analysis', roi_title:'Projected Returns', roi_desc:'Conservative projections based on 2024–2025 market data from local title offices.',
-      price_tag:'Price Guide', price_title:'What Your Budget Gets You', price_desc:'See these properties in person on your trip.',
-      map_tag:'Explore the Region', map_title:'Your Investment Zone', map_desc:"The Emerald Coast stretches from San Juan del Sur to the Costa Rican border — Nicaragua's most promising shoreline.",
-      surf_tag:'Beyond the Beach', surf_title:'Surf Destinations & Lifestyle', surf_desc:'Your trip blends business with pleasure. World-class surf, year-round sun, growing expat community.',
-      exp_tag:'The Experience', exp_title:'More Than Business', exp_desc:'Your investment trip is designed around serious due diligence — but also shows you why people stay.',
-      cta_tag:'Ready to See It?', cta_title:'Book Your Discovery Trip', cta_desc:'We handle flights, accommodation, tours, legal intros, and local experiences. You just show up.',
-      cta_whatsapp:'WhatsApp Us', cta_call:'Book a Call',
-      footer_tagline:"Curated investment trips to Nicaragua's Emerald Coast."
-    },
-    fr: {
-      nav_how:"Comment ça marche", nav_opp:"Opportunités", nav_why:"Pourquoi investir", nav_surf:"Zones de surf", nav_book:"Réserver un voyage",
-      hero_tag:"Agence de Voyage d'Investissement", hero_title:"Voyez-le. Sentez-le.<br><span>Investissez-y.</span>", hero_subtitle:"Voyages d'investissement sur mesure sur la Côte d'Émeraude du Nicaragua. Nous gérons tout — visites de terrains, introductions d'avocats, connexions expats, repas et loisirs — pour que vous puissiez vous concentrer sur votre portfolio tropical.",
-      btn_book:"Réserver votre voyage", btn_learn:"Comment ça marche",
-      stat_1_label:"Appréciation annuelle", stat_2_label:"Entrée minimum", stat_3_label:"Investissement autoroute côtière", stat_4_label:"Arrivées touristiques",
-      process_tag:"Le Processus", process_title:"Comment Fonctionne Votre Voyage", process_desc:"De votre première demande à la signature — nous gérons la logistique pour que vous puissiez vous concentrer sur l’opportunité.",
-      step1_title:"Appel de Découverte", step1_desc:"Appel vidéo de 30 min pour comprendre vos objectifs, budget et calendrier.",
-      step2_title:"Atterrissage", step2_desc:"Nous vous récupérons à Managua ou au Costa Rica. Hébergement et itinéraire verrouillés.",
-      step3_title:"Voir les Terrains", step3_desc:"Visitez des propriétés sélectionnées selon vos critères. Marchez sur les lots, sentez le surf.",
-      step4_title:"Due Diligence Juridique", step4_desc:"Introduction à des avocats locaux vérifiés pour titre, escrow et closing.",
-      step5_title:'Réseau Expat', step5_desc:"Dîner avec des expats établis. Obtenez les infos locales sans filtre.",
-      step6_title:"Clôture & Connexion", step6_desc:"Support post-voyage pendant 90 jours. Gestionnaires, constructeurs, communauté.",
-      market_tag:"Marché Actuel", market_title:"Opportunités d'Investissement", market_desc:"Propriétés sélectionnées sur la Côte d'Émeraude. Prix en USD. Titres vérifiés.",
-      intel_tag:"Renseignements du Marché", intel_title:"Pourquoi le Nicaragua, Pourquoi Maintenant", intel_desc:"La Côte d'Émeraude est à un point d'inflexion. Voici les données derrière l'opportunité.",
-      roi_tag:"Analyse ROI", roi_title:"Rendements Projetés", roi_desc:"Projections conservatrices basées sur les données 2024–2025 des bureaux de titres locaux.",
-      price_tag:"Guide des Prix", price_title:"Ce Que Votre Budget Vous Offre", price_desc:"Voyez ces propriétés en personne lors de votre voyage.",
-      map_tag:"Explorer la Région", map_title:"Votre Zone d'Investissement", map_desc:"La Côte d'Émeraude s'étend de San Juan del Sur à la frontière costaricaine — le littoral le plus prometteur du Nicaragua.",
-      surf_tag:"Au-delà de la Plage", surf_title:"Destinations de Surf & Lifestyle", surf_desc:"Votre voyage mêle affaires et plaisir. Surf de classe mondiale, soleil toute l'année, communauté expat en pleine croissance.",
-      exp_tag:"L'Expérience", exp_title:"Plus qu'une Affaire", exp_desc:"Votre voyage d'investissement est conçu pour la due diligence sérieuse — mais aussi pour vous montrer pourquoi les gens restent.",
-      cta_tag:"Prêt à le Voir ?", cta_title:"Réservez Votre Voyage Découverte", cta_desc:"Nous gérons les vols, l'hébergement, les visites, les intros légales et les expériences locales. Vous n'avez qu'à arriver.",
-      cta_whatsapp:"WhatsApp", cta_call:"Prendre RDV",
-      footer_tagline:"Voyages d'investissement sur mesure sur la Côte d'Émeraude du Nicaragua."
-    },
-    es: {
-      nav_how:"Cómo Funciona", nav_opp:"Oportunidades", nav_why:"Por Qué Invertir", nav_surf:"Zonas de Surf", nav_book:"Reservar Viaje",
-      hero_tag:"Agencia de Viajes de Inversión", hero_title:"Vélo. Siéntelo.<br><span>Invierte en ello.</span>", hero_subtitle:"Viajes de inversión curados en la Costa Esmeralda de Nicaragua. Nosotros nos encargamos de todo — visitas de terrenos, abogados, conexiones con expatriados, comida y ocio — para que puedas enfocarte en construir tu portafolio tropical.",
-      btn_book:"Reservar tu Viaje", btn_learn:"Cómo Funciona",
-      stat_1_label:"Apreciación Anual", stat_2_label:"Entrada Mínima", stat_3_label:"Inversión Carretera Costera", stat_4_label:"Llegadas Turísticas",
-      process_tag:"El Proceso", process_title:"Cómo Funciona Tu Viaje", process_desc:"Desde tu primera consulta hasta el cierre — nosotros manejamos la logística para que te enfoques en la oportunidad.",
-      step1_title:"Llamada de Descubrimiento", step1_desc:"Videollamada de 30 min para entender tus objetivos, presupuesto y cronograma.",
-      step2_title:"Aterrizaje", step2_desc:"Te recogemos en Managua o Costa Rica. Alojamiento e itinerario confirmados.",
-      step3_title:"Ver los Terrenos", step3_desc:"Visita propiedades seleccionadas según tus criterios. Camina los lotes, siente el surf.",
-      step4_title:"Debida Diligencia Legal", step4_desc:"Introducción a abogados locales verificados para título, escrow y cierre.",
-      step5_title:"Red de Expatriados", step5_desc:"Cena con expatriados establecidos. Obtén la info local sin filtros.",
-      step6_title:"Cierre y Conexión", step6_desc:"Soporte post-viaje por 90 días. Administradores, constructores, comunidad.",
-      market_tag:"Mercado Actual", market_title:"Oportunidades de Inversión", market_desc:"Propiedades seleccionadas en la Costa Esmeralda. Precios en USD. Títulos verificados.",
-      intel_tag:"Inteligencia de Mercado", intel_title:"Por Qué Nicaragua, Por Qué Ahora", intel_desc:"La Costa Esmeralda está en un punto de inflexión. Aquí están los datos detrás de la oportunidad.",
-      roi_tag:"Análisis ROI", roi_title:"Rendimientos Proyectados", roi_desc:"Proyecciones conservadoras basadas en datos 2024–2025 de oficinas de títulos locales.",
-      price_tag:"Guía de Precios", price_title:"Qué Obtienes con Tu Presupuesto", price_desc:"Ve estas propiedades en persona durante tu viaje.",
-      map_tag:"Explora la Región", map_title:"Tu Zona de Inversión", map_desc:"La Costa Esmeralda se extiende de San Juan del Sur a la frontera con Costa Rica — el litoral más prometedor de Nicaragua.",
-      surf_tag:"Más Allá de la Playa", surf_title:"Destinos de Surf & Lifestyle", surf_desc:"Tu viaje combina negocios y placer. Surf de clase mundial, sol todo el año, comunidad expat en crecimiento.",
-      exp_tag:"La Experiencia", exp_title:"Más que Negocios", exp_desc:"Tu viaje de inversión está diseñado para la debida diligencia seria — pero también para mostrarte por qué la gente se queda.",
-      cta_tag:"¿Listo para Verlo?", cta_title:"Reserva tu Viaje de Descubrimiento", cta_desc:"Nos encargamos de vuelos, alojamiento, tours, intros legales y experiencias locales. Tú solo llega.",
-      cta_whatsapp:"WhatsApp", cta_call:"Agendar Llamada",
-      footer_tagline:"Viajes de inversión curados en la Costa Esmeralda de Nicaragua."
-    }
-  };
-
-  let currentLang = 'en';
-  const langToggle = document.getElementById('langToggle');
-
-  function updateText(lang) {
-    currentLang = lang;
-    localStorage.setItem('nicawise-lang', lang);
-    document.documentElement.lang = lang;
-    const dict = i18n[lang];
-    if (!dict) return;
-
-    // Nav links
-    document.querySelectorAll('.nav-link').forEach(el => {
-      const href = el.getAttribute('href');
-      if (href === '#how-it-works') el.textContent = dict.nav_how;
-      else if (href === '#opportunities') el.textContent = dict.nav_opp;
-      else if (href === '#why-invest') el.textContent = dict.nav_why;
-      else if (href === '#surf') el.textContent = dict.nav_surf;
-    });
-    document.querySelector('.nav-link--cta').textContent = dict.nav_book;
-
-    // Hero
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (dict[key]) {
-        if (key.includes('_title') || key === 'hero_title') {
-          el.innerHTML = dict[key]; // allow HTML in titles
-        } else {
-          el.textContent = dict[key];
-        }
-      }
-    });
-
-    // CTA buttons
-    document.querySelectorAll('.btn').forEach(el => {
-      if (el.classList.contains('btn-whatsapp')) el.innerHTML = el.querySelector('svg') ? el.querySelector('svg').outerHTML + ' ' + dict.cta_whatsapp : dict.cta_whatsapp;
-      else if (el.querySelector('i[data-lucide="calendar"]')) el.innerHTML = '<i data-lucide="calendar"></i> ' + dict.cta_call;
-    });
-    lucide.createIcons();
-
-    // Footer
-    const ft = document.querySelector('.footer-tagline');
-    if (ft && dict.footer_tagline) ft.textContent = dict.footer_tagline;
-
-    // Toggle buttons
-    if (langToggle) {
-      langToggle.querySelectorAll('button').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.lang === lang);
-      });
-    }
-  }
-
-  if (langToggle) {
-    langToggle.querySelectorAll('button').forEach(btn => {
-      btn.addEventListener('click', () => updateText(btn.dataset.lang));
-    });
-  }
-  // Restore saved language
-  const savedLang = localStorage.getItem('nicawise-lang');
-  if (savedLang && i18n[savedLang]) updateText(savedLang);
-
 })();
 </script>
 </body>
