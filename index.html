@@ -631,18 +631,20 @@ WhatsApp Us
   // Leaflet Map
   const mapEl=document.getElementById('mapContainer');
   if(mapEl&&typeof L!=='undefined'){
-    const map=L.map('mapContainer',{scrollWheelZoom:false}).setView([11.25,-85.85],10);
+    const map=L.map('mapContainer',{scrollWheelZoom:false}).setView([11.38,-86.04],13);
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
        {attribution:'&copy; OpenStreetMap & CartoDB',subdomains:'abcd',maxZoom:19}).addTo(map);
     const points=[
-       {name:'San Juan del Sur',lat:11.252,lng:-85.871},
-       {name:'Popoyo',lat:11.383,lng:-86.031},
-       {name:'Rancho Santana',lat:11.330,lng:-86.053},
-       {name:'Hacienda Iguana',lat:11.323,lng:-86.047},
-       {name:'El Tránsito',lat:12.020,lng:-86.723}
+       {name:'1. San Juan del Sur',lat:11.252,lng:-85.871},
+       {name:'2. Popoyo / Guasacate',lat:11.383,lng:-86.031},
+       {name:'3. Rancho Santana',lat:11.300,lng:-86.050},
+       {name:'4. Hacienda Iguana',lat:11.320,lng:-86.060},
+       {name:'5. El Tránsito',lat:12.020,lng:-86.723}
     ];
-    points.forEach(p=>{
-       L.circleMarker([p.lat,p.lng],{radius:8,fillColor:'#0dbda3',color:'#fff',weight:2,opacity:1,fillOpacity:0.8}).addTo(map).bindPopup(p.name);
+    // Custom numbered pin icons
+    points.forEach((p,idx)=>{
+       const pin=L.divIcon({className:'',html:'<div style="width:28px;height:28px;border-radius:50%;background:#0dbda3;border:2px solid #fff;color:#0c1117;font-weight:700;font-size:13px;font-family:General Sans,sans-serif;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.4);">'+(idx+1)+'</div>',iconSize:[28,28],iconAnchor:[14,14]});
+       L.marker([p.lat,p.lng],{icon:pin}).addTo(map).bindPopup('<strong>'+p.name+'</strong>');
     });
   }
 
