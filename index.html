@@ -63,14 +63,15 @@ img { display:block; max-width:100%; height:auto; }
 .hero-bg { position:absolute; inset:0; z-index:0; }
 .hero-bg video { width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1.5s ease; }
 .hero-bg video.ready { opacity:1; }
-.hero-bg img { width:100%; height:100%; object-fit:cover; }
+.hero-poster { position:absolute; inset:0; background:url('./assets/hero.jpg') center/cover no-repeat; z-index:-1; }
+.hero-gradient-fade { position:absolute; bottom:0; left:0; right:0; height:30%; background:linear-gradient(to bottom, transparent 0%, var(--color-bg) 100%); z-index:1; pointer-events:none; }
 .hero-overlay { position:absolute; inset:0; background:linear-gradient(135deg,rgba(12,17,23,0.88) 0%,rgba(12,17,23,0.65) 40%,rgba(12,17,23,0.4) 100%); z-index:1; }
 .hero-content { position:relative; z-index:2; width:100%; max-width:1200px; margin:0 auto; padding:0 clamp(1.5rem,5vw,4rem); }
-.hero-tag { font-size:0.8rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--color-accent); margin-bottom:1rem; opacity:0; transform:translateY(22px); }
-.hero-title { font-family:var(--font-display); font-size:clamp(2.8rem,7vw,6rem); line-height:1.05; letter-spacing:-0.02em; margin-bottom:1.5rem; opacity:0; transform:translateY(30px); }
+.hero-tag { font-size:0.8rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--color-accent); margin-bottom:1rem; opacity:0; transform:translateY(22px); will-change:transform,opacity; }
+.hero-title { font-family:var(--font-display); font-size:clamp(2.8rem,7vw,6rem); line-height:1.05; letter-spacing:-0.02em; margin-bottom:1.5rem; opacity:0; transform:translateY(30px); will-change:transform,opacity; }
 .hero-title span { color:var(--color-warm); }
-.hero-subtitle { font-size:clamp(1rem,1.5vw,1.25rem); color:var(--color-text-muted); max-width:560px; margin-bottom:2.5rem; line-height:1.6; opacity:0; transform:translateY(22px); }
-.hero-actions { display:flex; gap:1rem; flex-wrap:wrap; opacity:0; transform:translateY(22px); }
+.hero-subtitle { font-size:clamp(1rem,1.5vw,1.25rem); color:var(--color-text-muted); max-width:560px; margin-bottom:2.5rem; line-height:1.6; opacity:0; transform:translateY(22px); will-change:transform,opacity; }
+.hero-actions { display:flex; gap:1rem; flex-wrap:wrap; opacity:0; transform:translateY(22px); will-change:transform,opacity; }
 .hero-actions .btn { display:inline-flex; align-items:center; gap:0.5rem; padding:1rem 2rem; border-radius:var(--radius-md); font-weight:600; font-size:0.95rem; text-decoration:none; transition:all var(--transition-smooth); }
 .btn-primary { background:var(--color-accent); color:#fff; }
 .btn-primary:hover { background:var(--color-accent-hover); transform:translateY(-2px); box-shadow:0 8px 30px var(--color-accent-glow); }
@@ -242,6 +243,26 @@ img { display:block; max-width:100%; height:auto; }
   .nav-link { font-size:1rem; }
   .how-grid,.compare-grid,.surf-grid,.exp-grid { grid-template-columns:1fr; }
   .invest-card-big,.roi-grid { grid-template-columns:1fr; }
+  /* Video: poster fallback on mobile */
+  .hero-bg video { display:none; }
+  .hero-poster { z-index:0; }
+  /* Hero text single column stack on mobile */
+  .hero-title { font-size:clamp(2rem,10vw,3rem); }
+  .hero-subtitle { font-size:1rem; max-width:100%; }
+  .hero-actions { flex-direction:column; gap:0.75rem; }
+  .hero-actions .btn { width:100%; justify-content:center; }
+}
+
+/* REDUCED MOTION — disable all transitions and animations */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after {
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.01ms !important;
+  }
+  .hero-bg video { display:none; }
+  .hero-poster { z-index:0; }
+  .reveal,.stagger-item,.hero-tag,.hero-title,.hero-subtitle,.hero-actions { opacity:1; transform:none; }
 }
 
 /* SCROLLBAR */
@@ -273,11 +294,12 @@ img { display:block; max-width:100%; height:auto; }
 
 <section class="hero" id="hero">
   <div class="hero-bg">
-    <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="./assets/hero.jpg">
+    <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="./assets/hero.jpg" aria-hidden="true">
       <source src="./hero-video.mp4" type="video/mp4">
-      <img src="./assets/hero.jpg" alt="Nicaragua Emerald Coast" loading="eager">
     </video>
+    <div class="hero-poster" role="img" aria-label="Nicaragua Emerald Coast"></div>
   </div>
+  <div class="hero-gradient-fade"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <p class="hero-tag" data-i18n="hero_tag">Curated Investment Trips</p>
@@ -898,12 +920,16 @@ WhatsApp Us
       btn.addEventListener('click', () => updateText(btn.dataset.lang));
     });
   }
-  // Video hero fade-in
+  // Video hero — wrapped in motion-safe guard
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const heroVideo = document.getElementById('heroVideo');
-  if (heroVideo) {
+  if (heroVideo && !prefersReduced) {
     heroVideo.addEventListener('loadeddata', () => heroVideo.classList.add('ready'));
     heroVideo.addEventListener('canplay', () => heroVideo.classList.add('ready'));
     if (heroVideo.readyState >= 3) heroVideo.classList.add('ready');
+  } else if (heroVideo && prefersReduced) {
+    heroVideo.pause();
+    heroVideo.removeAttribute('autoplay');
   }
 
   // Restore saved language
