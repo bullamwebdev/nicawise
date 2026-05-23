@@ -395,6 +395,54 @@ img { display:block; max-width:100%; height:auto; }
 #surf .section-header,
 #surf .surf-grid { position:relative; z-index:1; }
 
+/* ─── CARD GLOW PULSANT (D) ─── */
+@keyframes card-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(13,189,163,0); }
+  50% { box-shadow: 0 0 30px 4px rgba(13,189,163,0.18), 0 0 60px 8px rgba(232,164,92,0.08); }
+}
+.how-card, .opp-card, .invest-card, .surf-card, .compare-card, .exp-card {
+  transition: all var(--transition-smooth);
+}
+.how-card:hover, .invest-card:hover, .surf-card:hover, .compare-card:hover {
+  animation: card-glow 2.5s ease-in-out infinite;
+  border-color: rgba(13,189,163,0.3) !important;
+}
+.opp-card:hover {
+  animation: card-glow 2.5s ease-in-out infinite;
+  border-color: rgba(13,189,163,0.3) !important;
+  box-shadow: var(--shadow-lg), 0 0 40px rgba(13,189,163,0.12);
+}
+/* Featured cards — glow permanent subtil */
+.surf-card--featured, .compare-card--featured {
+  box-shadow: 0 0 20px rgba(13,189,163,0.06);
+}
+
+/* ─── SECTIONS SCROLL-GRADIENT BACKGROUNDS (A) ─── */
+/* Chaque section majeure a un data-bg-color qu'on anime via GSAP */
+#how-it-works   { --bg-start: #0c1117; --bg-end: #0f1a15; }
+#opportunities  { --bg-start: #0c1117; --bg-end: #141e1a; }
+#why-invest     { --bg-start: #0c1117; --bg-end: #121a20; }
+#compare        { --bg-start: #0c1117; --bg-end: #151820; }
+#roi            { --bg-start: #0c1117; --bg-end: #111820; }
+#surf           { --bg-start: #0c1117; --bg-end: #0f1a18; }
+#exp            { --bg-start: #0c1117; --bg-end: #141820; }
+
+.section-scroll-bg {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  opacity: 0; transition: opacity 1.2s ease;
+}
+.section-scroll-bg.active { opacity: 1; }
+
+/* Ligne de séparation lumineuse entre sections */
+.section-glow-border {
+  position: relative;
+}
+.section-glow-border::after {
+  content:''; position:absolute; bottom:0; left:10%; right:10%; height:1px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), var(--color-warm), transparent);
+  opacity: 0.4;
+}
+
 /* Experience — cards get gradient overlay on hover */
 .exp-card-overlay {
   background:linear-gradient(to top, rgba(12,17,23,0.9) 0%, rgba(12,17,23,0.3) 50%, rgba(12,17,23,0.1) 100%);
@@ -508,7 +556,7 @@ img { display:block; max-width:100%; height:auto; }
   </div>
 </section>
 
-<section class="section" id="how-it-works">
+<section class="section section-glow-border" id="how-it-works">
   <div class="section-header">
     <p class="section-tag" data-i18n="process_tag">The Process</p>
     <h2 class="section-title" data-i18n="process_title">How Your Trip Works</h2>
@@ -550,7 +598,7 @@ img { display:block; max-width:100%; height:auto; }
 
 <div class="section-separator"></div>
 
-<section class="section" id="opportunities">
+<section class="section section-glow-border" id="opportunities">
 <div class="section-header">
 <p class="section-tag" data-i18n="market_tag">Current Market</p>
 <h2 class="section-title" data-i18n="market_title">Investment Opportunities</h2>
@@ -604,7 +652,7 @@ img { display:block; max-width:100%; height:auto; }
 
 <div class="section-separator"></div>
 
-<section class="section" id="why-invest">
+<section class="section section-glow-border" id="why-invest">
 <div class="section-header">
 <p class="section-tag" data-i18n="intel_tag">Market Intelligence</p>
 <h2 class="section-title" data-i18n="intel_title">Why Nicaragua, Why Now</h2>
@@ -646,7 +694,7 @@ img { display:block; max-width:100%; height:auto; }
 
 <div class="section-separator"></div>
 
-<section class="section roi-section" id="roi">
+<section class="section roi-section section-glow-border" id="roi">
 <div class="section-header">
 <p class="section-tag" data-i18n="roi_tag">ROI Analysis</p>
 <h2 class="section-title" data-i18n="roi_title">Projected Returns</h2>
@@ -691,7 +739,7 @@ img { display:block; max-width:100%; height:auto; }
 </div>
 </section>
 
-<section class="section comparison" id="compare">
+<section class="section comparison section-glow-border" id="compare">
 <div class="section-header">
 <p class="section-tag" data-i18n="price_tag">Price Guide</p>
 <h2 class="section-title" data-i18n="price_title">What Your Budget Gets You</h2>
@@ -764,7 +812,7 @@ img { display:block; max-width:100%; height:auto; }
   </div>
 </section>
 
-<section class="section" id="surf">
+<section class="section section-glow-border" id="surf">
 <div class="section-header">
 <p class="section-tag" data-i18n="surf_tag">Beyond the Beach</p>
 <h2 class="section-title" data-i18n="surf_title">Surf Destinations & Lifestyle</h2>
@@ -795,7 +843,7 @@ img { display:block; max-width:100%; height:auto; }
 </div>
 </section>
 
-<section class="section" id="experience">
+<section class="section section-glow-border" id="experience">
 <div class="section-header">
 <p class="section-tag" data-i18n="exp_tag">The Experience</p>
 <h2 class="section-title" data-i18n="exp_title">More Than Business</h2>
@@ -1171,6 +1219,69 @@ WhatsApp Us
       v.removeAttribute('autoplay');
     });
   }
+})();
+</script>
+
+<!-- GSAP ScrollTrigger — section backgrounds that shift on scroll (A) -->
+<script>
+(function(){
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  const sections = [
+    { id:'how-it-works',   from:'#0c1117', to:'#0f1a15' },
+    { id:'opportunities',  from:'#0c1117', to:'#141e1a' },
+    { id:'why-invest',     from:'#0c1117', to:'#121a20' },
+    { id:'compare',        from:'#0c1117', to:'#151820' },
+    { id:'roi',            from:'#0c1117', to:'#111820' },
+    { id:'surf',           from:'#0c1117', to:'#0f1a18' },
+    { id:'exp',            from:'#0c1117', to:'#141820' },
+  ];
+
+  sections.forEach(sec => {
+    const el = document.getElementById(sec.id);
+    if (!el) return;
+    // make section position:relative so the pseudo-bg can sit inside
+    el.style.position = 'relative';
+    el.style.overflow = 'hidden';
+    // create animated bg layer
+    const bg = document.createElement('div');
+    bg.className = 'section-anim-bg';
+    bg.style.cssText = 'position:absolute; inset:0; z-index:0; pointer-events:none; transition:opacity .8s ease;';
+    bg.style.background = 'linear-gradient(180deg, ' + sec.from + ' 0%, ' + sec.to + ' 100%)';
+    bg.style.opacity = '0';
+    el.insertBefore(bg, el.firstChild);
+    // push content above bg
+    el.querySelectorAll(':scope > *').forEach(child => {
+      if (child !== bg) child.style.position = 'relative';
+    });
+
+    gsap.to(bg, {
+      opacity: 1,
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 80%',
+        end: 'top 30%',
+        scrub: true
+      }
+    });
+  });
+
+  // Glow border pulse on section separators
+  document.querySelectorAll('.section-glow-border').forEach(sec => {
+    gsap.fromTo(sec.querySelector('::after') || sec, 
+      { opacity: 0.1 },
+      {
+        opacity: 0.6,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+        scrollTrigger: { trigger: sec, start: 'top 90%' }
+      }
+    );
+  });
 })();
 </script>
 
