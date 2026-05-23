@@ -99,8 +99,8 @@ img { display:block; max-width:100%; height:auto; }
 .stat-label { font-size:0.8rem; color:var(--color-text-faint); letter-spacing:0.05em; margin-top:0.5rem; }
 
 /* SECTIONS */
-.section { padding:6rem clamp(1.5rem,5vw,4rem); }
-.section-header { max-width:1200px; margin:0 auto 4rem; text-align:center; }
+.section { padding:6rem clamp(1.5rem,5vw,4rem); position:relative; overflow:hidden; }
+.section-header { max-width:1200px; margin:0 auto 4rem; text-align:center; position:relative; z-index:1; }
 .section-tag { display:inline-block; font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--color-accent); margin-bottom:1rem; }
 .section-title { font-family:var(--font-display); font-size:clamp(2rem,4vw,3.5rem); letter-spacing:-0.015em; margin-bottom:1rem; }
 .section-desc { font-size:1.1rem; color:var(--color-text-muted); max-width:600px; margin:0 auto; }
@@ -395,52 +395,55 @@ img { display:block; max-width:100%; height:auto; }
 #surf .section-header,
 #surf .surf-grid { position:relative; z-index:1; }
 
-/* ─── CARD GLOW PULSANT (D) ─── */
+/* ─── CARD GLOW — MOBILE + DESKTOP (D) ─── */
 @keyframes card-glow {
   0%, 100% { box-shadow: 0 0 0 0 rgba(13,189,163,0); }
-  50% { box-shadow: 0 0 30px 4px rgba(13,189,163,0.18), 0 0 60px 8px rgba(232,164,92,0.08); }
+  50% { box-shadow: 0 0 30px 4px rgba(13,189,163,0.22), 0 0 60px 8px rgba(232,164,92,0.10); }
 }
 .how-card, .opp-card, .invest-card, .surf-card, .compare-card, .exp-card {
   transition: all var(--transition-smooth);
 }
-.how-card:hover, .invest-card:hover, .surf-card:hover, .compare-card:hover {
-  animation: card-glow 2.5s ease-in-out infinite;
-  border-color: rgba(13,189,163,0.3) !important;
+/* Desktop hover */
+@media (hover: hover) {
+  .how-card:hover, .invest-card:hover, .surf-card:hover, .compare-card:hover, .opp-card:hover {
+    animation: card-glow 2.5s ease-in-out infinite;
+    border-color: rgba(13,189,163,0.35) !important;
+  }
+  .opp-card:hover { box-shadow: var(--shadow-lg), 0 0 40px rgba(13,189,163,0.15); }
 }
-.opp-card:hover {
-  animation: card-glow 2.5s ease-in-out infinite;
-  border-color: rgba(13,189,163,0.3) !important;
-  box-shadow: var(--shadow-lg), 0 0 40px rgba(13,189,163,0.12);
+/* Mobile / touch — glow when in viewport (via JS class) */
+.card-glow-active {
+  animation: card-glow 2.5s ease-in-out infinite !important;
+  border-color: rgba(13,189,163,0.35) !important;
 }
+.opp-card.card-glow-active { box-shadow: var(--shadow-lg), 0 0 40px rgba(13,189,163,0.15); }
+
 /* Featured cards — glow permanent subtil */
 .surf-card--featured, .compare-card--featured {
-  box-shadow: 0 0 20px rgba(13,189,163,0.06);
+  box-shadow: 0 0 20px rgba(13,189,163,0.08);
 }
 
-/* ─── SECTIONS SCROLL-GRADIENT BACKGROUNDS (A) ─── */
-/* Chaque section majeure a un data-bg-color qu'on anime via GSAP */
-#how-it-works   { --bg-start: #0c1117; --bg-end: #0f1a15; }
-#opportunities  { --bg-start: #0c1117; --bg-end: #141e1a; }
-#why-invest     { --bg-start: #0c1117; --bg-end: #121a20; }
-#compare        { --bg-start: #0c1117; --bg-end: #151820; }
-#roi            { --bg-start: #0c1117; --bg-end: #111820; }
-#surf           { --bg-start: #0c1117; --bg-end: #0f1a18; }
-#exp            { --bg-start: #0c1117; --bg-end: #141820; }
-
-.section-scroll-bg {
-  position: absolute; inset: 0; pointer-events: none; z-index: 0;
-  opacity: 0; transition: opacity 1.2s ease;
+/* ─── SECTIONS SCROLL-GRADIENT BACKGROUNDS (A) — IntersectionObserver based ─── */
+.section-anim-bg {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s ease;
 }
-.section-scroll-bg.active { opacity: 1; }
+.section-anim-bg.visible { opacity: 1; }
 
 /* Ligne de séparation lumineuse entre sections */
 .section-glow-border {
   position: relative;
 }
 .section-glow-border::after {
-  content:''; position:absolute; bottom:0; left:10%; right:10%; height:1px;
+  content:''; position:absolute; bottom:0; left:5%; right:5%; height:2px;
   background: linear-gradient(90deg, transparent, var(--color-accent), var(--color-warm), transparent);
-  opacity: 0.4;
+  opacity: 0.5;
+}
+
+/* Mobile: make glow borders more visible */
+@media(max-width:768px){
+  .section-glow-border::after { left:0; right:0; height:3px; opacity:0.7; }
 }
 
 /* Experience — cards get gradient overlay on hover */
@@ -1226,8 +1229,7 @@ WhatsApp Us
 <script>
 (function(){
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReduced || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-  gsap.registerPlugin(ScrollTrigger);
+  if (prefersReduced) return;
 
   const sections = [
     { id:'how-it-works',   from:'#0c1117', to:'#0f1a15' },
@@ -1239,49 +1241,51 @@ WhatsApp Us
     { id:'exp',            from:'#0c1117', to:'#141820' },
   ];
 
+  // Build animated bg layers for each section
   sections.forEach(sec => {
     const el = document.getElementById(sec.id);
     if (!el) return;
-    // make section position:relative so the pseudo-bg can sit inside
     el.style.position = 'relative';
     el.style.overflow = 'hidden';
-    // create animated bg layer
     const bg = document.createElement('div');
     bg.className = 'section-anim-bg';
-    bg.style.cssText = 'position:absolute; inset:0; z-index:0; pointer-events:none; transition:opacity .8s ease;';
+    bg.style.cssText = 'position:absolute; inset:0; z-index:0; pointer-events:none; transition:opacity 1.2s ease;';
     bg.style.background = 'linear-gradient(180deg, ' + sec.from + ' 0%, ' + sec.to + ' 100%)';
     bg.style.opacity = '0';
     el.insertBefore(bg, el.firstChild);
-    // push content above bg
     el.querySelectorAll(':scope > *').forEach(child => {
-      if (child !== bg) child.style.position = 'relative';
-    });
-
-    gsap.to(bg, {
-      opacity: 1,
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 80%',
-        end: 'top 30%',
-        scrub: true
-      }
+      if (child !== bg && !child.classList.contains('section-anim-bg')) child.style.position = 'relative';
     });
   });
 
-  // Glow border pulse on section separators
-  document.querySelectorAll('.section-glow-border').forEach(sec => {
-    gsap.fromTo(sec.querySelector('::after') || sec, 
-      { opacity: 0.1 },
-      {
-        opacity: 0.6,
-        duration: 2,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
-        scrollTrigger: { trigger: sec, start: 'top 90%' }
+  // IntersectionObserver for section backgrounds — triggers once when section enters viewport
+  const bgObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const bg = entry.target.querySelector('.section-anim-bg');
+        if (bg) bg.classList.add('visible');
       }
-    );
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+
+  sections.forEach(sec => {
+    const el = document.getElementById(sec.id);
+    if (el) bgObserver.observe(el);
   });
+
+  // IntersectionObserver for card glow on mobile (touch devices have no hover)
+  const isTouch = window.matchMedia('(hover: none)').matches;
+  if (isTouch) {
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        entry.target.classList.toggle('card-glow-active', entry.isIntersecting);
+      });
+    }, { threshold: 0.6, rootMargin: '-20% 0px -20% 0px' });
+
+    document.querySelectorAll('.how-card, .opp-card, .invest-card, .surf-card, .compare-card').forEach(card => {
+      cardObserver.observe(card);
+    });
+  }
 })();
 </script>
 
