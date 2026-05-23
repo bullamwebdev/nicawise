@@ -467,7 +467,7 @@ img { display:block; max-width:100%; height:auto; }
 
 <section class="hero" id="hero">
   <div class="hero-bg">
-    <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="./assets/hero.jpg" aria-hidden="true">
+    <video id="heroVideo" autoplay muted playsinline preload="metadata" poster="./assets/hero.jpg" aria-hidden="true">
       <source src="./hero-video.mp4" type="video/mp4">
     </video>
     <div class="hero-poster" role="img" aria-label="Nicaragua Emerald Coast"></div>
@@ -1102,23 +1102,35 @@ WhatsApp Us
       btn.addEventListener('click', () => updateText(btn.dataset.lang));
     });
   }
-  // Video hero — wrapped in motion-safe guard
+
+  const savedLang = localStorage.getItem('nicawise-lang');
+  if (savedLang && i18n[savedLang]) updateText(savedLang);
+
+})();
+</script>
+
+<!-- Video hero — wrapped in motion-safe guard -->
+<script>
+(function(){
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const heroVideo = document.getElementById('heroVideo');
   if (heroVideo && !prefersReduced) {
     heroVideo.addEventListener('loadeddata', () => heroVideo.classList.add('ready'));
     heroVideo.addEventListener('canplay', () => heroVideo.classList.add('ready'));
     if (heroVideo.readyState >= 3) heroVideo.classList.add('ready');
+    
+    // Seamless loop: manually reset before end to prevent black-frame flash
+    heroVideo.addEventListener('timeupdate', function(){
+      if (heroVideo.duration && heroVideo.currentTime >= heroVideo.duration - 0.1) {
+        heroVideo.currentTime = 0;
+      }
+    });
   } else if (heroVideo && prefersReduced) {
     heroVideo.pause();
     heroVideo.removeAttribute('autoplay');
   }
-
-  // Restore saved language
-  const savedLang = localStorage.getItem('nicawise-lang');
-  if (savedLang && i18n[savedLang]) updateText(savedLang);
-
 })();
 </script>
+
 </body>
 </html>
