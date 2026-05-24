@@ -61,8 +61,7 @@ img { display:block; max-width:100%; height:auto; }
 /* HERO */
 .hero { position:relative; height:100vh; min-height:700px; display:flex; align-items:center; overflow:hidden; }
 .hero-bg { position:absolute; inset:0; z-index:0; }
-.hero-bg video { width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1.5s ease; }
-.hero-bg video.ready { opacity:1; }
+.hero-bg video { width:100%; height:100%; object-fit:cover; opacity:1; }
 .hero-poster { position:absolute; inset:0; background:url('./assets/hero.jpg') center/cover no-repeat; z-index:-1; }
 .hero-gradient-fade { position:absolute; inset:0; height:100%; background:linear-gradient(to bottom, transparent 0%, transparent 55%, var(--color-bg) 100%); z-index:1; pointer-events:none; }
 .hero-overlay { position:absolute; inset:0; background:linear-gradient(135deg,rgba(12,17,23,0.88) 0%,rgba(12,17,23,0.65) 40%,rgba(12,17,23,0.4) 100%); z-index:1; }
@@ -200,8 +199,7 @@ img { display:block; max-width:100%; height:auto; }
 /* VIDEO SECTION (mid-page) */
 .video-section { position:relative; height:70vh; min-height:500px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
 .video-section-bg { position:absolute; inset:0; z-index:0; }
-.video-section-bg video { width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1.5s ease; }
-.video-section-bg video.ready { opacity:1; }
+.video-section-bg video { width:100%; height:100%; object-fit:cover; opacity:1; }
 .video-section-poster { position:absolute; inset:0; background:url('./assets/coast.jpg') center/cover no-repeat; z-index:-1; }
 .video-section-fade-top { position:absolute; inset:0; height:100%; background:linear-gradient(to top, transparent 0%, transparent 70%, var(--color-surface) 100%); z-index:1; pointer-events:none; }
 .video-section-fade-bottom { position:absolute; inset:0; height:100%; background:linear-gradient(to bottom, transparent 0%, transparent 55%, var(--color-bg) 100%); z-index:1; pointer-events:none; }
@@ -464,9 +462,8 @@ img { display:block; max-width:100%; height:auto; }
   position:absolute; inset:0; z-index:0;
 }
 .cta-video-bg video {
-  width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1.5s ease;
+  width:100%; height:100%; object-fit:cover; opacity:1;
 }
-.cta-video-bg video.ready { opacity:1; }
 .cta-video-poster {
   position:absolute; inset:0; background:url('./assets/coast.jpg') center/cover no-repeat; z-index:-1;
 }
