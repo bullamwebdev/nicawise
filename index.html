@@ -257,8 +257,9 @@ img { display:block; max-width:100%; height:auto; }
   .how-grid,.compare-grid,.surf-grid,.exp-grid { grid-template-columns:1fr; }
   .invest-card-big,.roi-grid { grid-template-columns:1fr; }
   /* Video: poster fallback on mobile */
-  .hero-bg video { display:none; }
+  .hero-bg video, .cta-video-bg video { display:none; }
   .hero-poster { z-index:0; }
+  .cta-video-poster { z-index:0; }
   /* Hero text single column stack on mobile */
   .hero-title { font-size:clamp(2rem,10vw,3rem); }
   .hero-subtitle { font-size:1rem; max-width:100%; }
@@ -455,21 +456,47 @@ img { display:block; max-width:100%; height:auto; }
   background:linear-gradient(to top, rgba(12,17,23,0.85) 0%, rgba(13,189,163,0.08) 60%, rgba(232,164,92,0.06) 100%);
 }
 
-/* CTA — enhanced with multi-layer glow */
+/* CTA — enhanced with video background + multi-layer glow */
 .cta-section {
-  background:linear-gradient(135deg, var(--color-surface), var(--color-surface-2), #0f1620);
-  background-size:200% 200%;
-  animation:gradient-shift 14s ease infinite;
+  position:relative; overflow:hidden;
 }
+.cta-video-bg {
+  position:absolute; inset:0; z-index:0;
+}
+.cta-video-bg video {
+  width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1.5s ease;
+}
+.cta-video-bg video.ready { opacity:1; }
+.cta-video-poster {
+  position:absolute; inset:0; background:url('./assets/coast.jpg') center/cover no-repeat; z-index:-1;
+}
+.cta-video-fade-top {
+  position:absolute; inset:0; height:100%;
+  background:linear-gradient(to top, transparent 0%, transparent 70%, var(--color-bg) 100%);
+  z-index:1; pointer-events:none;
+}
+.cta-video-fade-bottom {
+  position:absolute; inset:0; height:100%;
+  background:linear-gradient(to bottom, transparent 0%, transparent 55%, var(--color-surface) 100%);
+  z-index:1; pointer-events:none;
+}
+.cta-video-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(12,17,23,0.85) 0%, rgba(12,17,23,0.55) 50%, rgba(12,17,23,0.35) 100%);
+  z-index:1;
+}
+.cta-section .cta-content { position:relative; z-index:2; }
+
+/* CTA — ambient gradient orbs behind */
 .cta-section::before {
   content:''; position:absolute; top:-50%; right:-20%; width:600px; height:600px;
   background:radial-gradient(circle, var(--color-accent-glow), transparent 70%);
-  opacity:.6; animation:pulse-glow 6s ease-in-out infinite;
+  opacity:.6; animation:pulse-glow 6s ease-in-out infinite; z-index:0;
 }
 .cta-section::after {
   content:''; position:absolute; bottom:-40%; left:-10%; width:500px; height:500px;
   background:radial-gradient(circle, var(--color-warm-glow), transparent 70%);
-  opacity:.35; animation:pulse-glow 8s ease-in-out infinite 2s;
+  opacity:.35; animation:pulse-glow 8s ease-in-out infinite 2s; z-index:0;
 }
 
 /* Footer — subtle top gradient line + ambient */
@@ -532,7 +559,7 @@ img { display:block; max-width:100%; height:auto; }
 <section class="hero" id="hero">
   <div class="hero-bg">
     <video id="heroVideo" autoplay muted playsinline preload="metadata" poster="./assets/hero.jpg" aria-hidden="true">
-      <source src="./hero-video.mp4" type="video/mp4">
+      <source src="./assets/video-hero.mp4" type="video/mp4">
     </video>
     <div class="hero-poster" role="img" aria-label="Nicaragua Emerald Coast"></div>
   </div>
@@ -800,7 +827,7 @@ img { display:block; max-width:100%; height:auto; }
 <section class="video-section" id="video-break">
   <div class="video-section-bg">
     <video id="midVideo" autoplay muted playsinline preload="metadata" poster="./assets/coast.jpg" aria-hidden="true">
-      <source src="./hero-video.mp4" type="video/mp4">
+      <source src="./assets/video-mid.mp4" type="video/mp4">
     </video>
     <div class="video-section-poster" role="img" aria-label="Emerald Coast aerial view"></div>
   </div>
@@ -876,20 +903,29 @@ img { display:block; max-width:100%; height:auto; }
 </div>
 </section>
 
-<section class="section cta-section" id="book">
-<div class="cta-content">
-<p class="section-tag" data-i18n="cta_tag">Ready to See It?</p>
-<h2 class="cta-title" data-i18n="cta_title">Book Your Discovery Trip</h2>
-<p class="cta-desc" data-i18n="cta_desc">We handle flights guidance, accommodation, property tours, legal introductions, and local experiences. You just show up with your eyes open.</p>
-<div class="cta-btns">
-<a href="https://wa.me/message/AAA7TSNYEKLWK1" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-large">
-<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-WhatsApp Us
-</a>
-<a href="https://calendly.com/genwiseai/30min?month=2026-05" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large" data-i18n-target="cta_call"><i data-lucide="calendar"></i> Book a Call</a>
-</div>
-<p style="margin-top:1.5rem; font-size:0.85rem; color:var(--color-text-faint);">epicurewise@gmail.com &bull; Typical response: under 4 hours</p>
-</div>
+<section class="section cta-section cta-video-section" id="book">
+  <div class="cta-video-bg">
+    <video id="ctaVideo" autoplay muted playsinline preload="metadata" poster="./assets/coast.jpg" aria-hidden="true">
+      <source src="./assets/video-cta.mp4" type="video/mp4">
+    </video>
+    <div class="cta-video-poster" role="img" aria-label="Emerald Coast sunset"></div>
+  </div>
+  <div class="cta-video-fade-top" aria-hidden="true"></div>
+  <div class="cta-video-fade-bottom" aria-hidden="true"></div>
+  <div class="cta-video-overlay" aria-hidden="true"></div>
+  <div class="cta-content">
+    <p class="section-tag" data-i18n="cta_tag">Ready to See It?</p>
+    <h2 class="cta-title" data-i18n="cta_title">Book Your Discovery Trip</h2>
+    <p class="cta-desc" data-i18n="cta_desc">We handle flights guidance, accommodation, property tours, legal introductions, and local experiences. You just show up with your eyes open.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/message/AAA7TSNYEKLWK1" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-large">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Us
+      </a>
+      <a href="https://calendly.com/genwiseai/30min?month=2026-05" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large" data-i18n-target="cta_call"><i data-lucide="calendar"></i> Book a Call</a>
+    </div>
+    <p style="margin-top:1.5rem; font-size:0.85rem; color:var(--color-text-faint);">epicurewise@gmail.com &bull; Typical response: under 4 hours</p>
+  </div>
 </section>
 
 <footer class="footer">
@@ -1214,6 +1250,7 @@ WhatsApp Us
   
   initVideo('heroVideo');
   initVideo('midVideo');
+  initVideo('ctaVideo');
   
   // Reduced motion: pause all videos
   if (prefersReduced) {
