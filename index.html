@@ -63,8 +63,9 @@ img { display:block; max-width:100%; height:auto; }
 .hero-bg { position:absolute; inset:0; z-index:0; }
 .hero-bg video { width:100%; height:100%; object-fit:cover; opacity:1; }
 .hero-poster { position:absolute; inset:0; background:url('./assets/hero.jpg') center/cover no-repeat; z-index:-1; }
-.hero-gradient-fade { position:absolute; inset:0; height:100%; background:linear-gradient(to bottom, transparent 0%, transparent 55%, var(--color-bg) 100%); z-index:1; pointer-events:none; }
-.hero-overlay { position:absolute; inset:0; background:linear-gradient(135deg,rgba(12,17,23,0.88) 0%,rgba(12,17,23,0.65) 40%,rgba(12,17,23,0.4) 100%); z-index:1; }
+.hero-gradient-fade { position:absolute; inset:0; height:100%; background:linear-gradient(to bottom, transparent 0%, transparent 70%, var(--color-bg) 100%); z-index:1; pointer-events:none; }
+.hero-overlay { position:absolute; inset:0; background:linear-gradient(135deg,rgba(12,17,23,0.45) 0%,rgba(12,17,23,0.28) 40%,rgba(12,17,23,0.15) 100%); z-index:1; }
+.hero-text-scrim { position:absolute; left:0; right:0; bottom:0; height:60%; background:linear-gradient(to top, rgba(12,17,23,0.55) 0%, rgba(12,17,23,0.25) 50%, transparent 100%); z-index:1; pointer-events:none; }
 .hero-content { position:relative; z-index:2; width:100%; max-width:1200px; margin:0 auto; padding:0 clamp(1.5rem,5vw,4rem); }
 .hero-tag { font-size:0.8rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--color-accent); margin-bottom:1rem; opacity:0; transform:translateY(22px); will-change:transform,opacity; }
 .hero-title { font-family:var(--font-display); font-size:clamp(2.8rem,7vw,6rem); line-height:1.05; letter-spacing:-0.02em; margin-bottom:1.5rem; opacity:0; transform:translateY(30px); will-change:transform,opacity; }
@@ -202,8 +203,8 @@ img { display:block; max-width:100%; height:auto; }
 .video-section-bg video { width:100%; height:100%; object-fit:cover; opacity:1; }
 .video-section-poster { position:absolute; inset:0; background:url('./assets/coast.jpg') center/cover no-repeat; z-index:-1; }
 .video-section-fade-top { position:absolute; inset:0; height:100%; background:linear-gradient(to top, transparent 0%, transparent 70%, var(--color-surface) 100%); z-index:1; pointer-events:none; }
-.video-section-fade-bottom { position:absolute; inset:0; height:100%; background:linear-gradient(to bottom, transparent 0%, transparent 55%, var(--color-bg) 100%); z-index:1; pointer-events:none; }
-.video-section-overlay { position:absolute; inset:0; background:linear-gradient(135deg,rgba(12,17,23,0.75) 0%,rgba(12,17,23,0.45) 50%,rgba(12,17,23,0.25) 100%); z-index:1; }
+.video-section-fade-bottom { position:absolute; inset:0; height:100%; background:linear-gradient(to bottom, transparent 0%, transparent 70%, var(--color-bg) 100%); z-index:1; pointer-events:none; }
+.video-section-overlay { position:absolute; inset:0; background:linear-gradient(135deg,rgba(12,17,23,0.38) 0%,rgba(12,17,23,0.22) 50%,rgba(12,17,23,0.10) 100%); z-index:1; }
 .video-section-content { position:relative; z-index:2; text-align:center; max-width:700px; padding:0 2rem; }
 .video-section-title { font-family:var(--font-display); font-size:clamp(2rem,5vw,3.5rem); margin-bottom:1rem; }
 .video-section-desc { font-size:1.1rem; color:var(--color-text-muted); margin-bottom:2rem; }
@@ -254,9 +255,10 @@ img { display:block; max-width:100%; height:auto; }
   .nav-link { font-size:1rem; }
   .how-grid,.compare-grid,.surf-grid,.exp-grid { grid-template-columns:1fr; }
   .invest-card-big,.roi-grid { grid-template-columns:1fr; }
-  /* Video: poster fallback on mobile */
-  .hero-bg video, .cta-video-bg video { display:none; }
+  /* Video: poster fallback on mobile (per VIDEO TRANSITION INSTRUCTIONS — all 3 video sections swap to poster <768px) */
+  .hero-bg video, .video-section-bg video, .cta-video-bg video { display:none; }
   .hero-poster { z-index:0; }
+  .video-section-poster { z-index:0; }
   .cta-video-poster { z-index:0; }
   /* Hero text single column stack on mobile */
   .hero-title { font-size:clamp(2rem,10vw,3rem); }
@@ -272,8 +274,8 @@ img { display:block; max-width:100%; height:auto; }
     animation-iteration-count:1 !important;
     transition-duration:0.01ms !important;
   }
-  .hero-bg video { display:none; }
-  .hero-poster { z-index:0; }
+  .hero-bg video, .video-section-bg video, .cta-video-bg video { display:none; }
+  .hero-poster, .video-section-poster, .cta-video-poster { z-index:0; }
   .reveal,.stagger-item,.hero-tag,.hero-title,.hero-subtitle,.hero-actions { opacity:1; transform:none; }
 }
 
@@ -474,12 +476,12 @@ img { display:block; max-width:100%; height:auto; }
 }
 .cta-video-fade-bottom {
   position:absolute; inset:0; height:100%;
-  background:linear-gradient(to bottom, transparent 0%, transparent 55%, var(--color-surface) 100%);
+  background:linear-gradient(to bottom, transparent 0%, transparent 70%, var(--color-surface) 100%);
   z-index:1; pointer-events:none;
 }
 .cta-video-overlay {
   position:absolute; inset:0;
-  background:linear-gradient(135deg, rgba(12,17,23,0.85) 0%, rgba(12,17,23,0.55) 50%, rgba(12,17,23,0.35) 100%);
+  background:linear-gradient(135deg, rgba(12,17,23,0.42) 0%, rgba(12,17,23,0.25) 50%, rgba(12,17,23,0.12) 100%);
   z-index:1;
 }
 .cta-section .cta-content { position:relative; z-index:2; }
@@ -563,6 +565,7 @@ img { display:block; max-width:100%; height:auto; }
   <div class="hero-aurora" aria-hidden="true"></div>
   <div class="hero-gradient-fade" aria-hidden="true"></div>
   <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-text-scrim" aria-hidden="true"></div>
   <div class="hero-content">
     <p class="hero-tag" data-i18n="hero_tag">Curated Investment Trips</p>
     <h1 class="hero-title" data-i18n="hero_title">See It. Feel It.<br><span>Invest in It.</span></h1>
