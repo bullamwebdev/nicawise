@@ -555,7 +555,7 @@ img { display:block; max-width:100%; height:auto; }
 
 <section class="hero" id="hero">
   <div class="hero-bg">
-    <video id="heroVideo" autoplay muted playsinline preload="metadata" poster="./assets/hero.jpg" aria-hidden="true">
+    <video id="heroVideo" autoplay muted playsinline preload="auto" poster="./assets/hero.jpg" aria-hidden="true">
       <source src="./assets/video-hero-mobile.mp4" type="video/mp4" media="(max-width: 768px)">
       <source src="./assets/video-hero.mp4" type="video/mp4">
     </video>
@@ -825,7 +825,7 @@ img { display:block; max-width:100%; height:auto; }
 <!-- MID-PAGE VIDEO SECTION -->
 <section class="video-section" id="video-break">
   <div class="video-section-bg">
-    <video id="midVideo" autoplay muted playsinline preload="metadata" poster="./assets/coast.jpg" aria-hidden="true">
+    <video id="midVideo" autoplay muted playsinline preload="auto" poster="./assets/coast.jpg" aria-hidden="true">
       <source src="./assets/video-mid-mobile.mp4" type="video/mp4" media="(max-width: 768px)">
       <source src="./assets/video-mid.mp4" type="video/mp4">
     </video>
@@ -905,7 +905,7 @@ img { display:block; max-width:100%; height:auto; }
 
 <section class="section cta-section cta-video-section" id="book">
   <div class="cta-video-bg">
-    <video id="ctaVideo" autoplay muted playsinline preload="metadata" poster="./assets/coast.jpg" aria-hidden="true">
+    <video id="ctaVideo" autoplay muted playsinline preload="auto" poster="./assets/coast.jpg" aria-hidden="true">
       <source src="./assets/video-cta-mobile.mp4" type="video/mp4" media="(max-width: 768px)">
       <source src="./assets/video-cta.mp4" type="video/mp4">
     </video>
@@ -1252,14 +1252,32 @@ img { display:block; max-width:100%; height:auto; }
   initVideo('heroVideo');
   initVideo('midVideo');
   initVideo('ctaVideo');
-  
+
   // Reduced motion: pause all videos
   if (prefersReduced) {
     document.querySelectorAll('video').forEach(v => {
       v.pause();
       v.removeAttribute('autoplay');
     });
+    return;
   }
+
+  // iOS Safari fallback: even with muted+playsinline+autoplay, iOS sometimes blocks
+  // autoplay until a user gesture. Listen for first touch/scroll/click and kick off .play()
+  // on every video. Apple permits .play() from inside a gesture handler.
+  function kickPlay(){
+    document.querySelectorAll('video').forEach(v => {
+      const p = v.play();
+      if (p && typeof p.catch === 'function') p.catch(() => {});
+    });
+  }
+  ['touchstart','click','scroll','pointerdown'].forEach(ev => {
+    window.addEventListener(ev, function once(){
+      kickPlay();
+      ['touchstart','click','scroll','pointerdown'].forEach(e =>
+        window.removeEventListener(e, once));
+    }, { passive: true, once: false });
+  });
 })();
 </script>
 
