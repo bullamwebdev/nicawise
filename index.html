@@ -247,11 +247,12 @@ img { display:block; max-width:100%; height:auto; }
 .stagger-item.anim-hidden { opacity:0; transform:translateY(30px); }
 
 /* MOBILE */
-.mobile-menu-btn { display:none; background:none; border:none; color:var(--color-text); cursor:pointer; }
+.mobile-menu-btn { display:none; background:none; border:none; color:var(--color-text); cursor:pointer; padding:0.6rem; width:44px; height:44px; align-items:center; justify-content:center; z-index:101; }
+.mobile-menu-btn svg { width:24px; height:24px; display:block; }
 @media(max-width:768px){
   .nav { position:fixed; top:0; right:-100%; bottom:0; width:280px; background:var(--color-surface); border-left:1px solid var(--color-border); flex-direction:column; padding:5rem 2rem; gap:1.5rem; transition:right var(--transition-smooth); }
   .nav.open { right:0; }
-  .mobile-menu-btn { display:block; }
+  .mobile-menu-btn { display:flex; }
   .nav-link { font-size:1rem; }
   .how-grid,.compare-grid,.surf-grid,.exp-grid { grid-template-columns:1fr; }
   .invest-card-big,.roi-grid { grid-template-columns:1fr; }
@@ -549,7 +550,7 @@ img { display:block; max-width:100%; height:auto; }
       <a href="#book" class="nav-link nav-link--cta">Book a Trip</a>
     <div class="lang-toggle" id="langToggle"><button data-lang="en" class="active">EN</button><button data-lang="fr">FR</button><button data-lang="es">ES</button></div>
     </nav>
-    <button class="mobile-menu-btn" id="menuBtn"><i data-lucide="menu"></i></button>
+    <button class="mobile-menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg></button>
   </div>
 </header>
 
@@ -963,8 +964,14 @@ img { display:block; max-width:100%; height:auto; }
   const menuBtn=document.getElementById('menuBtn');
   const nav=document.getElementById('nav');
   if(menuBtn&&nav){
-    menuBtn.addEventListener('click',()=>nav.classList.toggle('open'));
-    nav.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',()=>nav.classList.remove('open')));
+    menuBtn.addEventListener('click',()=>{
+      const open = nav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',()=>{
+      nav.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded','false');
+    }));
   }
 
   // Leaflet Map
